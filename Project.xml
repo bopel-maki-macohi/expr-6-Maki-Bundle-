@@ -17,6 +17,18 @@
 
 	<haxeflag name="--dce full"/>
 
+	<icon path="dev/icons/16px.png" size="16"/>
+	<icon path="dev/icons/16px.png" size="24"/>
+	<icon path="dev/icons/hires.png" size="32"/>
+	<icon path="dev/icons/128px.png" size="40"/>
+	<icon path="dev/icons/128px.png" size="48"/>
+	<icon path="dev/icons/128px.png" size="64"/>
+	<icon path="dev/icons/128px.png" size="96"/>
+	<icon path="dev/icons/128px.png" size="128"/>
+	<icon path="dev/icons/128px.png" size="256"/>
+	<icon path="dev/icons/hires.png" size="512"/>
+	<icon path="dev/icons/hires.png" size="768"/>
+
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="Maki Bundle" file="maki_bundle" main="Main" version="0.1.0" company="Maki" />
