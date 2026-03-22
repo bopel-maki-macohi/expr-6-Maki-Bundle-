@@ -6,7 +6,7 @@ import flixel.FlxSprite;
 class TitleMenuState extends MenuState
 {
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('menus/title/logo'));
-	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(true), false);
+	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(true), false, ButtonText.SCALE_HALF);
 
 	public var funding:Funding = new Funding((Defines.FORCE_FUNDING_POPUP) ? true : null);
 
@@ -15,7 +15,7 @@ class TitleMenuState extends MenuState
 	public var credits:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/credits'));
 	public var options:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/options'));
 
-	public var bugReportText:ButtonText = new ButtonText('Report Bugs', true, 16);
+	public var bugReportText:ButtonText = new ButtonText('Report Bugs', true, ButtonText.SCALE_HALF);
 
 	override function create()
 	{

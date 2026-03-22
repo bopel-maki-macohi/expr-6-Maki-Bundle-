@@ -11,13 +11,21 @@ class ButtonText extends FlxText
 
 	public var onClick:FlxSignal = new FlxSignal();
 
-	override public function new(t:String, e:Bool = true, s:Int = 8, ?x:Float, ?y:Float, ?fw:Float = 0)
+	public static final SCALE_MAIN:Int = 32;
+	public static final SCALE_HALF:Int = Math.round(SCALE_MAIN / 2);
+	public static final SCALE_QUARTER:Int = Math.round(SCALE_MAIN / 4);
+
+	override public function new(t:String, e:Bool = true, ?s:Null<Int>, ?x:Float, ?y:Float, ?fw:Float = 0)
 	{
         this.enabled = e;
 
-		super(x, y, fw, t, s);
+		super(x, y, fw, t, s ?? SCALE_MAIN);
 
 		color = FlxColor.BLACK;
+		font = AssetsUtil.path('Perfect DOS VGA 437.ttf');
+
+		antialiasing = false;
+		// tempted to disable fullscreen because flixel makes the text look fucking UUUUUGLLLLLLLY
 	}
 
 	override function update(elapsed:Float)

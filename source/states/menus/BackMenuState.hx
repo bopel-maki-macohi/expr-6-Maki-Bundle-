@@ -4,7 +4,7 @@ import flixel.FlxG;
 
 class BackMenuState extends MenuState
 {
-	public var back:ButtonText = new ButtonText('Back', true, 16);
+	public var back:ButtonText = new ButtonText('Back', true, ButtonText.SCALE_HALF);
 
 	override function create()
 	{
