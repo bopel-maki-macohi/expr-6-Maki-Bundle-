@@ -92,7 +92,14 @@ class Dreamland extends PlayState
 
 	public function spawnEnemy()
 	{
-		var newEnemy:DreamlandEnemy = new DreamlandEnemy();
+		var enemySkin:String = 'normal';
+
+		if (FlxG.random.bool(7.5))
+			enemySkin = 'hard';
+		else if (FlxG.random.bool(30))
+			enemySkin = 'easy';
+
+		var newEnemy:DreamlandEnemy = new DreamlandEnemy(enemySkin);
 
 		newEnemy.setPosition(FlxG.width + newEnemy.width * 2, player.y + FlxG.random.float(-120, 120));
 		if (newEnemy.y < 0 + enemy_offscreen_padding)

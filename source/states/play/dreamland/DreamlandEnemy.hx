@@ -4,13 +4,16 @@ import flixel.FlxSprite;
 
 class DreamlandEnemy extends FlxSprite
 {
-	override public function new()
+	public var enemySkin:String = '';
+
+	override public function new(?enemySkin:String)
 	{
 		super(0, 0);
 
-		makeGraphic(40, 40, flixel.util.FlxColor.RED);
+		this.enemySkin = enemySkin ?? 'normal';
+		loadGraphic(AssetsUtil.image('play/dreamland/enemies/${this.enemySkin}'));
 
-		// scale.set(2, 2);
-		// updateHitbox();
+		scale.set(2, 2);
+		updateHitbox();
 	}
 }
