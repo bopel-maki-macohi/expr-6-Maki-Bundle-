@@ -32,7 +32,7 @@ class TitleMenuState extends FlxState
 		if (funding.enabled)
 			add(funding);
 
-		funding.x = FlxG.width - (funding.width * 0.8);
+		funding.x = FlxG.width - (funding.width * 0.85);
 		funding.y = FlxG.height - (funding.height);
 
 		logo.scale.set(0.5, 0.5);
