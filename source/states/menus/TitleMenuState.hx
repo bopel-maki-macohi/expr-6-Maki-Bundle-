@@ -36,9 +36,6 @@ class TitleMenuState extends MenuState
 		logo.setPosition(-20, -20);
 		add(logo);
 
-		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height / 1.5));
-		add(versionText);
-
 		bugReportText.setPosition(FlxG.width - bugReportText.width, FlxG.height - bugReportText.height);
 		add(bugReportText);
 
@@ -89,6 +86,9 @@ class TitleMenuState extends MenuState
 				menuItems[i].setColorTransform(1.0, 1.0, 1.0);
 			});
 		}
+
+		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height * 0.1));
+		add(versionText);
 
 		about.onClick.add(() -> FlxG.switchState(() -> new AboutMenuState()));
 		credits.onClick.add(() -> FlxG.switchState(() -> new CreditsMenuState()));
