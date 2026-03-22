@@ -9,7 +9,7 @@ import flixel.FlxState;
 class TitleMenuState extends FlxState
 {
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('title/logo'));
-	public var versionText:FlxText = new FlxText(0, 0, 0, 'V${VersionUtil.getVersion()}', 16);
+	public var versionText:ButtonText = new ButtonText('V${VersionUtil.getVersion()}', false);
 
 	public var funding:Funding = new Funding(#if FORCE_FUNDING_POPUP true #else null #end);
 
@@ -17,6 +17,8 @@ class TitleMenuState extends FlxState
 	public var about:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/about'));
 	public var credits:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/credits'));
 	public var options:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/options'));
+
+	public var bugReportText:ButtonText = new ButtonText('Report Bugs', true);
 
 	override function create()
 	{
@@ -41,7 +43,17 @@ class TitleMenuState extends FlxState
 
 		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height / 1.5));
 		add(versionText);
-		versionText.color = FlxColor.BLACK;
+
+		bugReportText.setPosition(FlxG.width - bugReportText.width, FlxG.height - bugReportText.height);
+		add(bugReportText);
+
+		if (funding.enabled)
+			bugReportText.x = 0;
+
+		bugReportText.onClick.add(function()
+		{
+			FlxG.openURL('https://github.com/bopel-maki-macohi/expr-6-Maki-Bundle-/issues');
+		});
 
 		final menuItems = [play, about, credits, options];
 		final disabledMenuItem = [true, false, false, true];
