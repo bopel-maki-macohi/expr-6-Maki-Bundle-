@@ -13,6 +13,9 @@ class InitState extends FlxState
 		trace('curVersion (raw): ' + VersionUtil.getRawVersion());
 		UpdateUtil.checkForUpdate();
 
+		if (UpdateUtil.latestVersion == null || UpdateUtil.latestVersion == '')
+			UpdateUtil.latestVersion = VersionUtil.getRawVersion();
+
 		Save.init();
 
 		if (!FlxG.signals.postUpdate.has(postUpdate))
