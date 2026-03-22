@@ -11,7 +11,7 @@ class ButtonText extends FlxText
 
 	public var onClick:FlxSignal = new FlxSignal();
 
-	override public function new(t:String, e:Bool = true, ?fw:Float = 0, ?x:Float, ?y:Float, s:Int = 16)
+	override public function new(t:String, e:Bool = true, ?fw:Float = 0, ?x:Float, ?y:Float, s:Int = 8)
 	{
         this.enabled = e;
 

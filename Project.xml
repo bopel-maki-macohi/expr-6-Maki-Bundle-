@@ -6,6 +6,8 @@
 
 	<!--Place custom nodes like icons here-->
 
+	<define name="PRE_RELEASE" value="4" />
+
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="Maki Bundle" file="maki_bundle" main="Main" version="0.1.0" company="Maki" />

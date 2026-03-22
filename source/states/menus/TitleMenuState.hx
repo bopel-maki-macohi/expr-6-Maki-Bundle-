@@ -6,7 +6,7 @@ import flixel.FlxSprite;
 class TitleMenuState extends MenuState
 {
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('title/logo'));
-	public var versionText:ButtonText = new ButtonText('V${VersionUtil.getVersion()}', false);
+	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(true), false);
 
 	public var funding:Funding = new Funding(#if FORCE_FUNDING_POPUP true #else null #end);
 
