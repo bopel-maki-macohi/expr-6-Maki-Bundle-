@@ -57,6 +57,8 @@ class Dreamland extends PlayState
 
 					bulletGroup.members.remove(bullet);
 					bullet.destroy();
+
+					FlxG.sound.play(AssetsUtil.sound('play/dreamland/explode${FlxG.random.int(1, 1)}'));
 				}
 		}
 
@@ -81,7 +83,7 @@ class Dreamland extends PlayState
 		if (bulletGroup.members.length == maxBullets)
 			return;
 
-		FlxG.sound.play(AssetsUtil.sound('play/dreamland/shoot${FlxG.random.int(1, 4)}'));
+		FlxG.sound.play(AssetsUtil.sound('play/dreamland/shoot${FlxG.random.int(1, 3)}'));
 
 		var newBullet:DreamlandBullet = new DreamlandBullet();
 		newBullet.setPosition(player.getGraphicMidpoint().x, player.getGraphicMidpoint().y);
