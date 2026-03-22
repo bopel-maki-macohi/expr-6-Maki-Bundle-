@@ -84,13 +84,13 @@ class Dreamland extends PlayState
 				continue;
 
 			enemy.x -= enemy.width / 6;
+
 			if (enemy.x < 0 - enemy.width * 2)
 			{
 				enemyGroup.members.remove(enemy);
 				enemy.destroy();
 			}
-
-			if (FlxCollision.pixelPerfectCheck(enemy, player))
+			else if (FlxCollision.pixelPerfectCheck(enemy, player))
 			{
 				FlxG.switchState(() -> new PlayMenuState());
 			}
