@@ -15,7 +15,7 @@ class TitleMenuState extends MenuState
 	public var credits:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/credits'));
 	public var options:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/options'));
 
-	public var bugReportText:ButtonText = new ButtonText('Report Bugs', true);
+	public var bugReportText:ButtonText = new ButtonText('Report Bugs', true, 16);
 
 	override function create()
 	{
