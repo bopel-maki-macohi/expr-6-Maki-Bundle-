@@ -10,7 +10,7 @@ class CreditsMenuState extends AboutMenuState
 		super.create();
 
         aboutText.text = AssetsUtil.getText('menus/credits.txt');
-        aboutText.y += back.y + back.height;
+        aboutText.screenCenter();
 
         FlxG.camera.bgColor = FlxColor.BLACK;
         back.color = FlxColor.WHITE;

@@ -21,19 +21,18 @@ class TitleMenuState extends MenuState
 	{
 		super.create();
 
-		funding.scale.set(0.5, 0.5);
+		funding.scale.set(0.75, 0.75);
 		funding.updateHitbox();
 
 		if (funding.enabled)
 			add(funding);
 
-		funding.x = FlxG.width - (funding.width * 0.85);
+		funding.x = FlxG.width - (funding.width * 1);
 		funding.y = FlxG.height - (funding.height);
 
-		logo.scale.set(0.5, 0.5);
 		logo.updateHitbox();
 
-		logo.setPosition(-20, -20);
+		logo.setPosition(-40, -40);
 		add(logo);
 
 		bugReportText.setPosition(FlxG.width - bugReportText.width, FlxG.height - bugReportText.height);
@@ -56,22 +55,11 @@ class TitleMenuState extends MenuState
 			add(menuItems[i]);
 
 			menuItems[i].screenCenter();
+			menuItems[i].x *= 2;
 			menuItems[i].y *= 0.125 * 0.125 * 0.125 * 0.125;
 
-			if (funding.enabled)
-			{
-				menuItems[i].x *= 1.75;
-
-				menuItems[i].y += i * 96;
-			}
-			else
-			{
-				menuItems[i].x *= 2;
-
-				menuItems[i].y += i * 112;
-			}
-
-			menuItems[i].x -= i * 128;
+			menuItems[i].x -= i * (128 * 2.2);
+			menuItems[i].y += i * (128 * 1.25);
 
 			if (disabledMenuItem[i])
 				menuItems[i].alpha = 0.5;
@@ -87,7 +75,7 @@ class TitleMenuState extends MenuState
 			});
 		}
 
-		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height * 0.1));
+		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height / 1.5));
 		add(versionText);
 
 		play.onClick.add(() -> FlxG.switchState(() -> new PlayMenuState()));

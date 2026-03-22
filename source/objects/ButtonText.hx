@@ -11,9 +11,9 @@ class ButtonText extends FlxText
 
 	public var onClick:FlxSignal = new FlxSignal();
 
-	public static final SCALE_MAIN:Int = 32;
+	public static final SCALE_MAIN:Int = 64;
 	public static final SCALE_HALF:Int = Math.round(SCALE_MAIN / 2);
-	public static final SCALE_QUARTER:Int = Math.round(SCALE_MAIN / 4);
+	public static final SCALE_QUARTER:Int = Math.round(SCALE_HALF / 2);
 
 	override public function new(t:String, e:Bool = true, ?s:Null<Int>, ?x:Float, ?y:Float, ?fw:Float = 0)
 	{
