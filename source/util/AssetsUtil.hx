@@ -1,5 +1,7 @@
 package util;
 
+import lime.utils.Assets;
+
 class AssetsUtil
 {
 	public static function path(asset:String)
@@ -10,4 +12,13 @@ class AssetsUtil
 
 	public static function sound(sound:String)
 		return path('$sound.wav');
+
+	public static function getText(text:String):String
+	{
+		#if sys
+		return File.getContent(path(text));
+		#end
+
+		return Assets.getText(path(text));
+	}
 }

@@ -6,7 +6,7 @@ class Funding extends ButtonSprite
 {
 	override public function new(?enabled:Null<Bool>)
 	{
-		super(0, 0, AssetsUtil.image('title/shameless-plug'));
+		super(0, 0, AssetsUtil.image('menus/title/shameless-plug'));
 
 		this.enabled = enabled ?? Save.getBool('shamelessPlug');
 

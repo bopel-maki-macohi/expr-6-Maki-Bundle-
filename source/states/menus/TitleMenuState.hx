@@ -5,15 +5,15 @@ import flixel.FlxSprite;
 
 class TitleMenuState extends MenuState
 {
-	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('title/logo'));
+	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('menus/title/logo'));
 	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(true), false);
 
 	public var funding:Funding = new Funding((Defines.FORCE_FUNDING_POPUP) ? true : null);
 
-	public var play:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/play'));
-	public var about:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/about'));
-	public var credits:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/credits'));
-	public var options:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/options'));
+	public var play:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/play'));
+	public var about:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/about'));
+	public var credits:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/credits'));
+	public var options:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/options'));
 
 	public var bugReportText:ButtonText = new ButtonText('Report Bugs', true);
 
@@ -88,12 +88,12 @@ class TitleMenuState extends MenuState
 			{
 				menuItems[i].setColorTransform(1.0, 1.0, 1.0);
 			});
-
-			menuItems[i].onClick.add(function()
-			{
-				trace(i);
-			});
 		}
+
+		about.onClick.add(function()
+		{
+			FlxG.switchState(() -> new AboutMenuState());
+		});
 	}
 
 	override function update(elapsed:Float)
