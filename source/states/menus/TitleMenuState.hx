@@ -23,7 +23,7 @@ class TitleMenuState extends MenuState
 
 		logo.updateHitbox();
 
-		logo.setPosition(-40, -40);
+		logo.setPosition(-80, -80);
 		add(logo);
 
 		bugReportText.setPosition(FlxG.width - bugReportText.width, FlxG.height - bugReportText.height);
@@ -46,7 +46,7 @@ class TitleMenuState extends MenuState
 			menuItems[i].x *= 2;
 			menuItems[i].y *= 0.125 * 0.125 * 0.125 * 0.125;
 
-			menuItems[i].x -= i * (128 * 2.2);
+			menuItems[i].x -= i * (128 * 2.75);
 			menuItems[i].y += i * (128 * 1.25);
 
 			if (disabledMenuItem[i])
