@@ -9,10 +9,11 @@ class InitState extends FlxState
 	{
 		super.create();
 
-		trace(VersionUtil.getVersion());
+		trace('curVersion: ' + VersionUtil.getVersion());
+		trace('curVersion (raw): ' + VersionUtil.getRawVersion());
+		UpdateUtil.checkForUpdate();
 
 		Save.init();
-		UpdateUtil.checkForUpdate();
 
 		if (!FlxG.signals.postUpdate.has(postUpdate))
 			FlxG.signals.postUpdate.add(postUpdate);
