@@ -1,5 +1,6 @@
 package states.play.dreamland;
 
+import flixel.util.FlxColor;
 import flixel.util.FlxCollision;
 import flixel.FlxSprite;
 import flixel.FlxG;
@@ -16,6 +17,26 @@ class Dreamland extends PlayState
 	public var enemy_offscreen_padding:Float = 40;
 
 	public var bg = new FlxSprite(0, 0, AssetsUtil.image('play/dreamland/bg'));
+
+	public var scoreText:ButtonText = new ButtonText('score', false, ButtonText.SCALE_HALF);
+	public var score:Int = 0;
+
+	public var config = {
+		enemyScores: {
+			easy: 10,
+			normal: 30,
+			hard: 60,
+		},
+		enemySkins: {
+			easy: 'easy',
+			normal: 'normal',
+			hard: 'hard',
+		},
+		enemyChances: {
+			easy: 30,
+			hard: 7.5,
+		},
+	};
 
 	override function create()
 	{
@@ -34,11 +55,21 @@ class Dreamland extends PlayState
 
 		player.screenCenter();
 		player.x *= 0.1;
+
+		scoreText.color = FlxColor.WHITE;
+		add(scoreText);
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (score > Save.getDataFieldField('highscores', 'dreamland'))
+			Save.setDataFieldField('highscores', 'dreamland', score);
+
+		scoreText.text = 'Score: $score | Highscore: ${Save.getDataFieldField('highscores', 'dreamland')}';
+		scoreText.screenCenter();
+		scoreText.y = 10;
 
 		player.y += (((FlxG.keys.anyPressed([DOWN, S])) ? 1 : 0) - ((FlxG.keys.anyPressed([UP, W])) ? 1 : 0)) * 4;
 
@@ -46,7 +77,7 @@ class Dreamland extends PlayState
 			player.y = player.height;
 		if (player.y > FlxG.height - player.height)
 			player.y = FlxG.height - player.height;
-		
+
 		bg.screenCenter();
 		bg.y += player.y / 50;
 
@@ -76,6 +107,15 @@ class Dreamland extends PlayState
 
 					bulletGroup.members.remove(bullet);
 					bullet.destroy();
+
+					if (enemy.enemySkin == config.enemySkins.easy)
+						score += config.enemyScores.easy;
+					else if (enemy.enemySkin == config.enemySkins.normal)
+						score += config.enemyScores.normal;
+					else if (enemy.enemySkin == config.enemySkins.hard)
+						score += config.enemyScores.hard;
+					else
+						score -= 1;
 
 					FlxG.sound.play(AssetsUtil.sound('play/dreamland/explode${FlxG.random.int(1, 3)}'));
 				}
@@ -116,12 +156,12 @@ class Dreamland extends PlayState
 
 	public function spawnEnemy()
 	{
-		var enemySkin:String = 'normal';
+		var enemySkin:String = config.enemySkins.normal;
 
-		if (FlxG.random.bool(7.5))
-			enemySkin = 'hard';
-		else if (FlxG.random.bool(30))
-			enemySkin = 'easy';
+		if (FlxG.random.bool(config.enemyChances.hard))
+			enemySkin = config.enemySkins.hard;
+		else if (FlxG.random.bool(config.enemyChances.easy))
+			enemySkin = config.enemySkins.easy;
 
 		var newEnemy:DreamlandEnemy = new DreamlandEnemy(enemySkin);
 

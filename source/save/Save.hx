@@ -44,11 +44,14 @@ class Save
 	{
 		try
 		{
+			// trace('Getting Save "data" field($field): ${getString(field)}');
 			return Json.parse(getString(field));
 		}
 		catch (e)
 		{
-			trace('Save "data" field retrival error: $e');
+			if (Defines.debug)
+				trace('Save "data" field($field) retrival error: $e');
+
 			return null;
 		}
 	}
@@ -71,7 +74,7 @@ class Save
 		var data:Dynamic = getData(datafield);
 		Reflect.setField(data, field, value);
 
-		setField(datafield, data);
+		setField(datafield, Json.stringify(data));
 	}
 
 	public static function init()
