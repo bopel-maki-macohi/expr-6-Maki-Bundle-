@@ -1,5 +1,6 @@
 package states.play.dreamland;
 
+import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
@@ -12,10 +13,19 @@ class Dreamland extends PlayState
 
 	public var enemyGroup:FlxTypedSpriteGroup<DreamlandEnemy> = new FlxTypedSpriteGroup<DreamlandEnemy>();
 	public var enemy_offscreen_padding:Float = 40;
+	
+	public var bg = new FlxSprite(0,0,AssetsUtil.image('play/dreamland/bg'));
 
 	override function create()
 	{
 		super.create();
+
+		add(bg);
+		
+		bg.scale.set(2,2);
+		bg.updateHitbox();
+
+		bg.screenCenter();
 
 		add(bulletGroup);
 		add(player);
