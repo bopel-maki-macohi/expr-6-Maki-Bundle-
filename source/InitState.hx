@@ -9,6 +9,8 @@ class InitState extends FlxState
 	{
 		super.create();
 
+		var defines = MacroUtil.getDefines();
+
 		trace('curVersion: ' + VersionUtil.getVersion());
 		trace('curVersion (raw): ' + VersionUtil.getRawVersion());
 		UpdateUtil.checkForUpdate();
