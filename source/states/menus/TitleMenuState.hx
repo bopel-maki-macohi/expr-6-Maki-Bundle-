@@ -90,10 +90,8 @@ class TitleMenuState extends MenuState
 			});
 		}
 
-		about.onClick.add(function()
-		{
-			FlxG.switchState(() -> new AboutMenuState());
-		});
+		about.onClick.add(() -> FlxG.switchState(() -> new AboutMenuState()));
+		credits.onClick.add(() -> FlxG.switchState(() -> new CreditsMenuState()));
 	}
 
 	override function update(elapsed:Float)
