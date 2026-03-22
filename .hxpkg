@@ -19,6 +19,9 @@
 			},
 			{
 				"name": "hxcpp-debug-server"
+			},
+			{
+				"name": "flixel-addons"
 			}
 		]
 	}
