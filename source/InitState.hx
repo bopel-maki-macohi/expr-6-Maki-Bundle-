@@ -9,6 +9,8 @@ class InitState extends FlxState
 	{
 		super.create();
 
+		Save.init();
+
 		FlxG.switchState(() -> new SplashState());
 	}
 
