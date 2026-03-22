@@ -1,5 +1,8 @@
 import states.*;
+
 import states.menus.*;
+import states.menus.configs.*;
+
 import states.play.*;
 import states.play.dreamland.*;
 
