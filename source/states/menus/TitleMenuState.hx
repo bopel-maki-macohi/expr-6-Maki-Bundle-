@@ -1,12 +1,9 @@
 package states.menus;
 
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.FlxState;
 
-class TitleMenuState extends FlxState
+class TitleMenuState extends MenuState
 {
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('title/logo'));
 	public var versionText:ButtonText = new ButtonText('V${VersionUtil.getVersion()}', false);
@@ -23,8 +20,6 @@ class TitleMenuState extends FlxState
 	override function create()
 	{
 		super.create();
-
-		FlxG.camera.bgColor = FlxColor.WHITE;
 
 		funding.scale.set(0.5, 0.5);
 		funding.updateHitbox();
