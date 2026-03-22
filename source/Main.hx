@@ -13,6 +13,9 @@ class Main extends Sprite
 		CrashHandler.initialize();
 		CrashHandler.queryStatus();
 
+		// shut up
+		openfl.utils._internal.Log.level = openfl.utils._internal.Log.LogLevel.INFO;
+
 		addChild(new FlxGame(0, 0, InitState, 60, 60, true, false));
 	}
 }

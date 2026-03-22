@@ -48,7 +48,7 @@ class TitleMenuState extends MenuState
 		});
 
 		final menuItems = [play, about, credits, options];
-		final disabledMenuItem = [true, false, false, true];
+		final disabledMenuItem = [false, false, false, true];
 		for (i in 0...menuItems.length)
 		{
 			menuItems[i].ID = i;
@@ -90,6 +90,7 @@ class TitleMenuState extends MenuState
 		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height * 0.1));
 		add(versionText);
 
+		play.onClick.add(() -> FlxG.switchState(() -> new PlayMenuState()));
 		about.onClick.add(() -> FlxG.switchState(() -> new AboutMenuState()));
 		credits.onClick.add(() -> FlxG.switchState(() -> new CreditsMenuState()));
 	}
