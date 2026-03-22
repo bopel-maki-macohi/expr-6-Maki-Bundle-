@@ -15,6 +15,8 @@
 
 	<haxedef name="openfl-enable-handle-error" />
 
+	<haxeflag name="--dce full"/>
+
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="Maki Bundle" file="maki_bundle" main="Main" version="0.1.0" company="Maki" />
@@ -33,6 +35,7 @@
 
 	<set name="BUILD_DIR" value="export/release" />
 	<set name="BUILD_DIR" value="export/debug" if="debug"/>
+	<set name="BUILD_DIR" value="export/indev" if="indev"/>
 
 	<source path="source" />
 	<assets path="assets" />

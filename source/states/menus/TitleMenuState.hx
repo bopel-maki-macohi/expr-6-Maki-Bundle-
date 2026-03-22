@@ -8,7 +8,7 @@ class TitleMenuState extends MenuState
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('menus/title/logo'));
 	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(true), false, ButtonText.SCALE_HALF);
 
-	public var funding:Funding = new Funding((Defines.FORCE_FUNDING_POPUP) ? true : null);
+	public var popup:Popup;
 
 	public var play:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/play'));
 	public var about:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('menus/title/about'));
@@ -21,15 +21,6 @@ class TitleMenuState extends MenuState
 	{
 		super.create();
 
-		funding.scale.set(0.75, 0.75);
-		funding.updateHitbox();
-
-		if (funding.enabled)
-			add(funding);
-
-		funding.x = FlxG.width - (funding.width * 1);
-		funding.y = FlxG.height - (funding.height);
-
 		logo.updateHitbox();
 
 		logo.setPosition(-40, -40);
@@ -37,9 +28,6 @@ class TitleMenuState extends MenuState
 
 		bugReportText.setPosition(FlxG.width - bugReportText.width, FlxG.height - bugReportText.height);
 		add(bugReportText);
-
-		if (funding.enabled)
-			bugReportText.x = 0;
 
 		bugReportText.onClick.add(function()
 		{
@@ -81,6 +69,28 @@ class TitleMenuState extends MenuState
 		play.onClick.add(() -> FlxG.switchState(() -> new PlayMenuState()));
 		about.onClick.add(() -> FlxG.switchState(() -> new AboutMenuState()));
 		credits.onClick.add(() -> FlxG.switchState(() -> new CreditsMenuState()));
+
+		if ((Defines.FORCE_FUNDING_POPUP) ? true : Save.getBool('shamelessPlug'))
+		{
+			popup = new Popup('funding', true);
+
+			popup.scale.set(0.75, 0.75);
+			popup.updateHitbox();
+			popup.onClick.add(function()
+			{
+				FlxG.openURL(Constants.LINK_KOFI);
+			});
+
+			if (popup.enabled)
+			{
+				add(popup);
+				bugReportText.x = 0;
+			}
+
+			popup.x = FlxG.width - (popup.width * 1);
+			popup.y = FlxG.height - (popup.height);
+		}
+		else if (UpdateUtil.checkForUpdate()) {}
 	}
 
 	override function update(elapsed:Float)
