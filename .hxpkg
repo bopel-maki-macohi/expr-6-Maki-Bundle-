@@ -1,0 +1,25 @@
+[
+	{
+		"profile": "default",
+		"pkgs": [
+			{
+				"name": "flixel"
+			},
+			{
+				"name": "openfl"
+			},
+			{
+				"name": "lime"
+			},
+			{
+				"name": "hscript"
+			},
+			{
+				"name": "hxcpp"
+			},
+			{
+				"name": "hxcpp-debug-server"
+			}
+		]
+	}
+]
