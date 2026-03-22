@@ -1,5 +1,6 @@
 package states.play.dreamland;
 
+import flixel.util.FlxCollision;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
@@ -13,16 +14,16 @@ class Dreamland extends PlayState
 
 	public var enemyGroup:FlxTypedSpriteGroup<DreamlandEnemy> = new FlxTypedSpriteGroup<DreamlandEnemy>();
 	public var enemy_offscreen_padding:Float = 40;
-	
-	public var bg = new FlxSprite(0,0,AssetsUtil.image('play/dreamland/bg'));
+
+	public var bg = new FlxSprite(0, 0, AssetsUtil.image('play/dreamland/bg'));
 
 	override function create()
 	{
 		super.create();
 
 		add(bg);
-		
-		bg.scale.set(2,2);
+
+		bg.scale.set(2, 2);
 		bg.updateHitbox();
 
 		bg.screenCenter();
@@ -41,8 +42,10 @@ class Dreamland extends PlayState
 
 		player.y += (((FlxG.keys.anyPressed([DOWN, S])) ? 1 : 0) - ((FlxG.keys.anyPressed([UP, W])) ? 1 : 0)) * 4;
 
-		if (player.y < player.height) player.y = player.height;
-		if (player.y > FlxG.height - player.height) player.y = FlxG.height - player.height;
+		if (player.y < player.height)
+			player.y = player.height;
+		if (player.y > FlxG.height - player.height)
+			player.y = FlxG.height - player.height;
 
 		if (FlxG.keys.justReleased.SPACE)
 			fireBullet();
@@ -85,6 +88,11 @@ class Dreamland extends PlayState
 			{
 				enemyGroup.members.remove(enemy);
 				enemy.destroy();
+			}
+
+			if (FlxCollision.pixelPerfectCheck(enemy, player))
+			{
+				FlxG.switchState(() -> new PlayMenuState());
 			}
 		}
 	}
