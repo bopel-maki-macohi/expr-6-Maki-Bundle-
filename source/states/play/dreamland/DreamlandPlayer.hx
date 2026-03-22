@@ -12,7 +12,7 @@ class DreamlandPlayer extends FlxSprite
 		animation.add('idle', [0]);
 		animation.add('shoot-a2', [1, 2], 4, false);
 		animation.add('shoot-a1', [2, 3], 4, false);
-		animation.add('shoot-a0', [3, 4], 4, false);
+		animation.add('shoot-a0', [3], 2, false);
 		animation.play('idle');
 
 		animation.onFinish.add(function(animName)
