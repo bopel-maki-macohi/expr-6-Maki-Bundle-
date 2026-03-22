@@ -50,6 +50,9 @@ class Dreamland extends PlayState
 
 		scoreText.color = FlxColor.WHITE;
 		add(scoreText);
+
+		add(pauseBG);
+		add(pauseText);
 	}
 
 	override function update(elapsed:Float)
@@ -63,12 +66,17 @@ class Dreamland extends PlayState
 		scoreText.screenCenter();
 		scoreText.y = 10;
 
-		player.y += (((FlxG.keys.anyPressed([DOWN, S])) ? 1 : 0) - ((FlxG.keys.anyPressed([UP, W])) ? 1 : 0)) * 8;
-
 		if (player.y < player.height)
 			player.y = player.height;
 		if (player.y > FlxG.height - player.height)
 			player.y = FlxG.height - player.height;
+	}
+
+	override function unpausedUpdate()
+	{
+		super.unpausedUpdate();
+
+		player.y += (((FlxG.keys.anyPressed([DOWN, S])) ? 1 : 0) - ((FlxG.keys.anyPressed([UP, W])) ? 1 : 0)) * 8;
 
 		bg.screenCenter();
 		bg.y += player.y / 50;

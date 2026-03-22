@@ -1,5 +1,48 @@
 package states.play;
 
+import flixel.util.FlxColor;
+import flixel.FlxSprite;
+import flixel.FlxG;
 import flixel.FlxState;
 
-class PlayState extends FlxState {}
+class PlayState extends FlxState
+{
+	public var paused:Bool = false;
+
+	public var pauseBG:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+	public var pauseText:ButtonText = new ButtonText('PAUSED', true, ButtonText.SCALE_MAIN);
+
+	override function create()
+	{
+		super.create();
+
+		pauseBG.alpha = .6;
+
+		pauseText.screenCenter();
+		pauseText.onClick.add(function()
+		{
+			FlxG.switchState(() -> new PlayMenuState());
+		});
+        pauseText.color = FlxColor.WHITE;
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		if (FlxG.keys.justReleased.ENTER)
+			paused = !paused;
+
+		pauseBG.visible = paused;
+		pauseText.visible = paused;
+
+		if (paused)
+			pausedUpdate();
+		else
+			unpausedUpdate();
+	}
+
+	public function pausedUpdate() {};
+
+	public function unpausedUpdate() {};
+}
