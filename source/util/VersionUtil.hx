@@ -15,14 +15,14 @@ class VersionUtil
 		if (v.endsWith('.0'))
 			v = v.substr(0, v.length - 2);
 
-		if (Constants.DEFINE_PRERELEASE != null && Std.parseInt(Constants.DEFINE_PRERELEASE) > 0)
+		if (Defines.PRE_RELEASE != null && Std.parseInt(Defines.PRE_RELEASE) > 0)
 		{
 			if (linebreakBetweenBits)
 				v += '\n';
 			else
 				v += ' ';
 
-			v += '(pre-release ${Constants.DEFINE_PRERELEASE})';
+			v += '(pre-release ${Defines.PRE_RELEASE})';
 		}
 
 		return v;

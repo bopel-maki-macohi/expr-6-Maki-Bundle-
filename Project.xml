@@ -4,7 +4,7 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<define name="PRE_RELEASE" value="0" />
+	<!-- <define name="PRE_RELEASE" value="1" /> -->
 
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />

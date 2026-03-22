@@ -4,7 +4,7 @@ import states.menus.*;
 import util.*;
 import util.tools.*;
 import util.external.*;
-import util.external.windows.*;
+import util.macros.*;
 
 import save.*;
 import objects.*;
