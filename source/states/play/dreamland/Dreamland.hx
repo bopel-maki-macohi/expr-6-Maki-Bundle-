@@ -10,12 +10,16 @@ class Dreamland extends PlayState
 	public var bulletGroup:FlxTypedSpriteGroup<DreamlandBullet> = new FlxTypedSpriteGroup<DreamlandBullet>();
 	public var maxBullets:Int = 2;
 
+	public var enemyGroup:FlxTypedSpriteGroup<DreamlandEnemy> = new FlxTypedSpriteGroup<DreamlandEnemy>();
+	public var enemy_offscreen_padding:Float = 40;
+
 	override function create()
 	{
 		super.create();
 
 		add(bulletGroup);
 		add(player);
+		add(enemyGroup);
 
 		player.screenCenter();
 		player.x *= 0.1;
@@ -30,17 +34,44 @@ class Dreamland extends PlayState
 		if (FlxG.keys.justReleased.SPACE)
 			fireBullet();
 
-        for (bullet in bulletGroup.members)
-        {
-            if (bullet == null) continue;
+		if (FlxG.random.int(0, 20) == 10)
+			spawnEnemy();
 
-            bullet.x += bullet.width;
-            if (bullet.x > FlxG.width + (bullet.width * 2))
-            {
-                bulletGroup.members.remove(bullet);
-                bullet.destroy();
-            }
-        }
+		for (bullet in bulletGroup.members)
+		{
+			if (bullet == null)
+				continue;
+
+			bullet.x += bullet.width;
+			if (bullet.x > FlxG.width + (bullet.width * 2))
+			{
+				bulletGroup.members.remove(bullet);
+				bullet.destroy();
+			}
+
+			for (enemy in enemyGroup.members)
+				if (bullet.overlaps(enemy))
+				{
+					enemyGroup.members.remove(enemy);
+					enemy.destroy();
+
+					bulletGroup.members.remove(bullet);
+					bullet.destroy();
+				}
+		}
+
+		for (enemy in enemyGroup.members)
+		{
+			if (enemy == null)
+				continue;
+
+			enemy.x -= enemy.width / 6;
+			if (enemy.x < 0 - enemy.width * 2)
+			{
+				enemyGroup.members.remove(enemy);
+				enemy.destroy();
+			}
+		}
 	}
 
 	public function fireBullet()
@@ -55,5 +86,18 @@ class Dreamland extends PlayState
 		var newBullet:DreamlandBullet = new DreamlandBullet();
 		newBullet.setPosition(player.getGraphicMidpoint().x, player.getGraphicMidpoint().y);
 		bulletGroup.add(newBullet);
+	}
+
+	public function spawnEnemy()
+	{
+		var newEnemy:DreamlandEnemy = new DreamlandEnemy();
+
+		newEnemy.setPosition(FlxG.width + newEnemy.width * 2, player.y + FlxG.random.float(-60, 60));
+		if (newEnemy.y < 0 + enemy_offscreen_padding)
+			newEnemy.y = 0 + enemy_offscreen_padding;
+		if (newEnemy.y > FlxG.height - newEnemy.height - enemy_offscreen_padding)
+			newEnemy.y = FlxG.height - newEnemy.height - enemy_offscreen_padding;
+
+		enemyGroup.add(newEnemy);
 	}
 }
