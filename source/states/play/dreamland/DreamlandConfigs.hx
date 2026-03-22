@@ -25,15 +25,30 @@ class DreamlandConfigs
 	};
 
 	public static var GEHENNA(get, never):DreamlandConfig;
-	
-	static function get_GEHENNA():DreamlandConfig {
+
+	static function get_GEHENNA():DreamlandConfig
+	{
 		var c = DEFAULT;
 
+		c.enemyScores = {
+			easy: 25,
+			normal: 54,
+			hard: 97,
+		}
+		
 		c.enemySpeedDividers = {
 			easy: 5,
 			normal: 4,
 			hard: 3,
 		}
+
+		c.enemySkins = {
+			easy: 'easy-gehenna',
+			normal: 'normal-gehenna',
+			hard: 'hard-gehenna',
+		}
+
+		c.enemySkinScale = 1;
 
 		return c;
 	}

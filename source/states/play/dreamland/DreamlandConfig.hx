@@ -17,5 +17,7 @@ typedef DreamlandConfig =
 	enemyChances:
 	{
 		easy:Float, hard:Float,
-	}
+	},
+
+	?enemySkinScale:Float,
 }
