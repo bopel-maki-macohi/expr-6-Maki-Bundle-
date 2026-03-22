@@ -24,20 +24,31 @@ class Save
 
 	public static function init()
 	{
+		trace('Binding save...');
 		FlxG.save.bind('MakiBundle', Application.current.meta.get('company'));
 
-        #if CLEAR_SAVE
-        FlxG.save.erase();
-        #end
+		#if CLEAR_SAVE
+		trace('Clearing save...');
+		FlxG.save.erase();
+		#end
 
-		Application.current.onExit.add(function(l)
-		{
-			FlxG.save.flush();
-		});
+		if (!Application.current.onExit.has(onExit))
+			Application.current.onExit.add(onExit);
+
+		trace('Setting save variables...');
 
 		if (getField('shamelessPlug') == null)
 			setField('shamelessPlug', true);
 		else if (getBool('shamelessPlug'))
 			setField('shamelessPlug', false);
+
+		trace('Save initalization complete!');
+		trace(FlxG.save.data);
+	}
+
+	static function onExit(l:Int)
+	{
+		trace('Saving...');
+		FlxG.save.flush();
 	}
 }
