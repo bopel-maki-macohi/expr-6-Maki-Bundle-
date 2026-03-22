@@ -41,6 +41,9 @@ class Dreamland extends PlayState
 
 		player.y += (((FlxG.keys.anyPressed([DOWN, S])) ? 1 : 0) - ((FlxG.keys.anyPressed([UP, W])) ? 1 : 0)) * 4;
 
+		if (player.y < player.height) player.y = player.height;
+		if (player.y > FlxG.height - player.height) player.y = FlxG.height - player.height;
+
 		if (FlxG.keys.justReleased.SPACE)
 			fireBullet();
 
