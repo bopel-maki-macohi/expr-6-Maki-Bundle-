@@ -10,7 +10,9 @@ class PlayMenuState extends BackMenuState
 
 		var dreamlandMinigame:ButtonText = new ButtonText('Dreamland', true, ButtonText.SCALE_MAIN, 50, 50);
 		add(dreamlandMinigame);
-		dreamlandMinigame.onClick.add(function() {
+		dreamlandMinigame.onClick.add(function()
+		{
+			Constants.selectSfx();
 			FlxG.switchState(() -> new Dreamland());
 		});
 	}

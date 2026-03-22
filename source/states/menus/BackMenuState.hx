@@ -16,6 +16,7 @@ class BackMenuState extends MenuState
 
 	public function onBack()
 	{
+		Constants.selectSfx();
 		FlxG.switchState(() -> new TitleMenuState());
 	}
 }

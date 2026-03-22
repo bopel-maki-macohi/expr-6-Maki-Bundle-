@@ -31,6 +31,7 @@ class TitleMenuState extends MenuState
 
 		bugReportText.onClick.add(function()
 		{
+			Constants.selectSfx();
 			FlxG.openURL(Constants.LINK_GITHUB_ISSUES);
 		});
 
@@ -70,12 +71,16 @@ class TitleMenuState extends MenuState
 		about.onClick.add(() -> FlxG.switchState(() -> new AboutMenuState()));
 		credits.onClick.add(() -> FlxG.switchState(() -> new CreditsMenuState()));
 
+		for (i in 0...menuItems.length)
+			menuItems[i].onClick.add(Constants.selectSfx);
+
 		if ((Defines.FORCE_FUNDING_POPUP) ? true : Save.getBool('shamelessPlug'))
 		{
 			popup = new Popup('funding', true);
 
 			popup.onClick.add(function()
 			{
+				Constants.selectSfx();
 				FlxG.openURL(Constants.LINK_KOFI);
 			});
 		}
@@ -97,6 +102,7 @@ class TitleMenuState extends MenuState
 			if (popup != null)
 				popup.onClick.add(function()
 				{
+					Constants.selectSfx();
 					FlxG.openURL(Constants.LINK_GITHUB_RELEASES);
 				});
 		}
