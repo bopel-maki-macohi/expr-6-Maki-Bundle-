@@ -12,6 +12,7 @@ class InitState extends FlxState
 		trace(VersionUtil.getVersion());
 
 		Save.init();
+		UpdateUtil.checkForUpdate();
 
 		if (!FlxG.signals.postUpdate.has(postUpdate))
 			FlxG.signals.postUpdate.add(postUpdate);
