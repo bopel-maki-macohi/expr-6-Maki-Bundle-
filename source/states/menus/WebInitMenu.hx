@@ -23,8 +23,8 @@ class WebInitMenu extends AboutMenuState
 		super.create();
 
 		aboutText.text = AssetsUtil.getText('menus/web-init.txt');
+		aboutText.size = ButtonText.SCALE_HALF;
 		aboutText.screenCenter();
-		aboutText.size = ButtonText.SCALE_MAIN;
 
 		FlxG.camera.bgColor = FlxColor.BLACK;
 
