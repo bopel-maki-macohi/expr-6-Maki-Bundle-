@@ -13,7 +13,7 @@ class PlayMenuState extends BackMenuState
 		dreamlandMinigame.onClick.add(function()
 		{
 			Constants.selectSfx();
-			FlxG.switchState(() -> new Dreamland());
+			FlxG.switchState(() -> new Dreamland(DreamlandConfigs.DEFAULT));
 		});
 		dreamlandMinigame.screenCenter();
 	}

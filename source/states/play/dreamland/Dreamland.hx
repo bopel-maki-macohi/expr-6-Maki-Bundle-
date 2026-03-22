@@ -21,22 +21,14 @@ class Dreamland extends PlayState
 	public var scoreText:ButtonText = new ButtonText('score', false, ButtonText.SCALE_HALF);
 	public var score:Int = 0;
 
-	public var config = {
-		enemyScores: {
-			easy: 10,
-			normal: 30,
-			hard: 60,
-		},
-		enemySkins: {
-			easy: 'easy',
-			normal: 'normal',
-			hard: 'hard',
-		},
-		enemyChances: {
-			easy: 30,
-			hard: 7.5,
-		},
-	};
+	public var config:DreamlandConfig;
+
+	override public function new(config:DreamlandConfig)
+	{
+		super();
+
+		this.config = config;
+	}
 
 	override function create()
 	{
@@ -126,7 +118,14 @@ class Dreamland extends PlayState
 			if (enemy == null)
 				continue;
 
-			enemy.x -= enemy.width / 6;
+			if (enemy.enemySkin == config.enemySkins.easy)
+				enemy.x -= enemy.width / config.enemySpeedDividers.easy;
+			else if (enemy.enemySkin == config.enemySkins.normal)
+				enemy.x -= enemy.width / config.enemySpeedDividers.normal;
+			else if (enemy.enemySkin == config.enemySkins.hard)
+				enemy.x -= enemy.width / config.enemySpeedDividers.hard;
+			else
+				enemy.x -= enemy.width / 6;
 
 			if (enemy.x < 0 - enemy.width * 2)
 			{
