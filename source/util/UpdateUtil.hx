@@ -28,7 +28,7 @@ class UpdateUtil
 								latestVersion = subElm.x.get('version');
 						}
 
-			trace('latestVersion: $latestVersion');
+			trace('latestVer : $latestVersion');
 
             if (VersionUtil.getRawVersion() != latestVersion)
                 return true;
