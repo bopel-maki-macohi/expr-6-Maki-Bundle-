@@ -11,7 +11,7 @@ class TitleMenuState extends FlxState
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('title/logo'));
 	public var versionText:FlxText = new FlxText(0, 0, 0, 'V${VersionUtil.getVersion()}', 16);
 
-	public var funding:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('title/shameless-plug'));
+	public var funding:Funding = new Funding(#if FORCE_FUNDING_POPUP true #else null #end);
 
 	override function create()
 	{
@@ -42,30 +42,5 @@ class TitleMenuState extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		if (members.contains(funding))
-		{
-			final mouseX = FlxG.mouse.x;
-			final mouseY = FlxG.mouse.y;
-
-			final fundingTargetX = funding.getGraphicMidpoint().x;
-			final fundingTargetY = funding.getGraphicMidpoint().y;
-
-			final negativeX = 1.3;
-			final positiveX = 0.7;
-
-			final negativeY = 1.7;
-			final positiveY = 0.8;
-
-			if ((mouseX < fundingTargetX * negativeX && mouseX > fundingTargetX * positiveX) && (mouseY < fundingTargetY * negativeY && mouseY > fundingTargetY * positiveY))
-			{
-				funding.setColorTransform(1.2, 1.2, 1.2);
-
-				if (FlxG.mouse.justReleased)
-					FlxG.openURL('https://ko-fi.com/bopel_maki_macohi/goal?g=0');
-			}
-			else
-				funding.setColorTransform(1.0, 1.0, 1.0);
-		}
 	}
 }
