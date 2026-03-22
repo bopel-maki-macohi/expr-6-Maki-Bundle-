@@ -6,10 +6,10 @@ import flixel.FlxSprite;
 
 class ButtonSprite extends FlxSprite
 {
-	public var enabled:Bool = false;
+	public var enabled:Bool = true;
 
 	public var onClick:FlxSignal = new FlxSignal();
-    public var useDefaultOnClickCondition:Bool = false;
+    public var useDefaultOnClickCondition:Bool = true;
 
 	var overlapping:Bool = false;
 

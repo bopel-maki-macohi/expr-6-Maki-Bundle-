@@ -28,8 +28,9 @@ class Funding extends ButtonSprite
 
 			if ((mouseX < fundingTargetX * negativeX && mouseX > fundingTargetX * positiveX)
 				&& (mouseY < fundingTargetY * negativeY && mouseY > fundingTargetY * positiveY))
-				if (onClick != null)
-					onClick.dispatch();
+				if (FlxG.mouse.justReleased)
+					if (onClick != null)
+						onClick.dispatch();
 		});
 
 		onClick.add(function()

@@ -13,6 +13,11 @@ class TitleMenuState extends FlxState
 
 	public var funding:Funding = new Funding(#if FORCE_FUNDING_POPUP true #else null #end);
 
+	public var play:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/play'));
+	public var about:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/about'));
+	public var credits:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/credits'));
+	public var options:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/options'));
+
 	override function create()
 	{
 		super.create();
@@ -22,7 +27,7 @@ class TitleMenuState extends FlxState
 		funding.scale.set(0.5, 0.5);
 		funding.updateHitbox();
 
-		if (Save.getBool('shamelessPlug'))
+		if (funding.enabled)
 			add(funding);
 
 		funding.x = FlxG.width - (funding.width * 0.8);
@@ -37,6 +42,51 @@ class TitleMenuState extends FlxState
 		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height / 1.5));
 		add(versionText);
 		versionText.color = FlxColor.BLACK;
+
+		final menuItems = [play, about, credits, options];
+		final disabledMenuItem = [true, false, false, true];
+		for (i in 0...menuItems.length)
+		{
+			menuItems[i].ID = i;
+			menuItems[i].enabled = !disabledMenuItem[i];
+			add(menuItems[i]);
+
+			menuItems[i].screenCenter();
+			menuItems[i].y *= 0.125 * 0.125 * 0.125 * 0.125;
+
+			if (funding.enabled)
+			{
+				menuItems[i].x *= 1.75;
+
+				menuItems[i].y += i * 96;
+			}
+			else
+			{
+				menuItems[i].x *= 2;
+
+				menuItems[i].y += i * 112;
+			}
+
+			menuItems[i].x -= i * 128;
+
+			if (disabledMenuItem[i])
+				menuItems[i].alpha = 0.5;
+
+			menuItems[i].onOverlap.add(function()
+			{
+				menuItems[i].setColorTransform(1.2, 1.2, 1.2);
+			});
+
+			menuItems[i].onUnoverlap.add(function()
+			{
+				menuItems[i].setColorTransform(1.0, 1.0, 1.0);
+			});
+
+			menuItems[i].onClick.add(function()
+			{
+				trace(i);
+			});
+		}
 	}
 
 	override function update(elapsed:Float)
