@@ -41,8 +41,6 @@
 
 	<haxelib name="flixel" />
 
-	<haxelib name="hxcpp-debug-server" if="debug"/>
-
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<haxedef name="FLX_NO_HEALTH" />

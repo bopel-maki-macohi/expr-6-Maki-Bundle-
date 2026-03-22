@@ -16,12 +16,8 @@ class MacroUtil
 		if (value == null)
 			value = defaultValue;
 
-		#if !HXCPP_DEBUGGER
 		var pos = haxe.macro.Context.currentPos();
 		haxe.macro.Context.info('$key: $value', pos);
-		#else
-		trace('$key: $value');
-		#end
 
 		return macro $v{value};
 	}
