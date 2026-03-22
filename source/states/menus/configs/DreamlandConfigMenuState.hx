@@ -2,7 +2,7 @@ package states.menus.configs;
 
 import flixel.FlxG;
 
-class DreamlandConfigMenuState extends MenuState
+class DreamlandConfigMenuState extends BackMenuState
 {
 	public var titleConfig:ButtonText = new ButtonText('Dreamland Config Menu', false, ButtonText.SCALE_MAIN);
 
