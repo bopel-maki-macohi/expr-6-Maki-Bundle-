@@ -4,9 +4,13 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<!--Place custom nodes like icons here-->
-
 	<define name="PRE_RELEASE" value="0" />
+
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE" />
+
+	<haxedef name="openfl-enable-handle-error" />
 
 	<!-- _________________________ Application Settings _________________________ -->
 

@@ -13,11 +13,16 @@ class InitState extends FlxState
 
 		Save.init();
 
+		if (!FlxG.signals.postUpdate.has(postUpdate))
+			FlxG.signals.postUpdate.add(postUpdate);
+
 		FlxG.switchState(() -> new SplashState());
 	}
 
-	override public function update(elapsed:Float)
+	function postUpdate()
 	{
-		super.update(elapsed);
+		if (FlxG.keys.pressed.F3)
+			if (FlxG.keys.justPressed.C)
+				throw 'Debug Crash';
 	}
 }
