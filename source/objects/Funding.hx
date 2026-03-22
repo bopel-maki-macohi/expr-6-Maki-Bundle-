@@ -1,24 +1,18 @@
 package objects;
 
 import flixel.FlxG;
-import flixel.FlxSprite;
 
-class Funding extends FlxSprite
+class Funding extends ButtonSprite
 {
-	public var enabled:Bool = false;
-
 	override public function new(?enabled:Null<Bool>)
 	{
 		super(0, 0, AssetsUtil.image('title/shameless-plug'));
 
 		this.enabled = enabled ?? Save.getBool('shamelessPlug');
-	}
 
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
+		useDefaultOnClickCondition = false;
 
-		if (this.enabled)
+		overlapUpdate.add(function()
 		{
 			final mouseX = FlxG.mouse.x;
 			final mouseY = FlxG.mouse.y;
@@ -34,14 +28,23 @@ class Funding extends FlxSprite
 
 			if ((mouseX < fundingTargetX * negativeX && mouseX > fundingTargetX * positiveX)
 				&& (mouseY < fundingTargetY * negativeY && mouseY > fundingTargetY * positiveY))
-			{
-				setColorTransform(1.2, 1.2, 1.2);
+				if (onClick != null)
+					onClick.dispatch();
+		});
 
-				if (FlxG.mouse.justReleased)
-					FlxG.openURL('https://ko-fi.com/bopel_maki_macohi/goal?g=0');
-			}
-			else
-				setColorTransform(1.0, 1.0, 1.0);
-		}
+		onClick.add(function()
+		{
+			FlxG.openURL('https://ko-fi.com/bopel_maki_macohi/goal?g=0');
+		});
+
+		onOverlap.add(function()
+		{
+			setColorTransform(1.2, 1.2, 1.2);
+		});
+
+		onUnoverlap.add(function()
+		{
+			setColorTransform(1.0, 1.0, 1.0);
+		});
 	}
 }
