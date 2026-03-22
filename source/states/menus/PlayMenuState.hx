@@ -15,5 +15,6 @@ class PlayMenuState extends BackMenuState
 			Constants.selectSfx();
 			FlxG.switchState(() -> new Dreamland());
 		});
+		dreamlandMinigame.screenCenter();
 	}
 }
