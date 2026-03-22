@@ -1,7 +1,6 @@
 package util.tools;
 
 import flixel.FlxG;
-import sys.FileSystem;
 import lime.app.Application;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
