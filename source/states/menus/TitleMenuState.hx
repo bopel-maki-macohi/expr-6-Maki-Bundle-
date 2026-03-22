@@ -20,10 +20,7 @@ class TitleMenuState extends FlxState
         logo.scale.set(0.5, 0.5);
         logo.updateHitbox();
 
-        logo.screenCenter();
-        logo.y *= 1 / 2;
-        logo.x *= 1 / 8;
-        
+        logo.setPosition(-20, -20);
         add(logo);
 
         versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height / 1.5));
