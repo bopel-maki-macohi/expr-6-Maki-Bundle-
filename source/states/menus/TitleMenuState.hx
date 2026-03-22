@@ -47,7 +47,7 @@ class TitleMenuState extends MenuState
 
 		bugReportText.onClick.add(function()
 		{
-			FlxG.openURL('https://github.com/bopel-maki-macohi/expr-6-Maki-Bundle-/issues');
+			FlxG.openURL(Constants.LINK_GITHUB);
 		});
 
 		final menuItems = [play, about, credits, options];

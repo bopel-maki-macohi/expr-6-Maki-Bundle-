@@ -12,7 +12,7 @@ class Funding extends ButtonSprite
 
 		onClick.add(function()
 		{
-			FlxG.openURL('https://ko-fi.com/bopel_maki_macohi/goal?g=0');
+			FlxG.openURL(Constants.LINK_KOFI);
 		});
 
 		onOverlap.add(function()
