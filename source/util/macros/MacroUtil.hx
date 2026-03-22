@@ -4,7 +4,6 @@ class MacroUtil
 {
 	public static macro function getDefine(key:String, ?defaultValue:String):haxe.macro.Expr
 	{
-		var pos = haxe.macro.Context.currentPos();
 
 		var value:Null<String> = null;
 
@@ -17,7 +16,13 @@ class MacroUtil
 		if (value == null)
 			value = defaultValue;
 
-		haxe.macro.Context.info('Define($key): $value', pos);
+		#if !HXCPP_DEBUGGER
+		var pos = haxe.macro.Context.currentPos();
+		haxe.macro.Context.info('$key: $value', pos);
+		#else
+		trace('$key: $value');
+		#end
+
 		return macro $v{value};
 	}
 }
