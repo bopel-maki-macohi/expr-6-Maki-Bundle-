@@ -41,6 +41,14 @@ class SplashState extends FlxState
 	{
 		trace('Ending splash...');
 
+		if (Defines.html5)
+			FlxG.switchState(() -> new WebInitMenu(startingStateBehavior));
+		else
+			startingStateBehavior();
+	}
+
+	public static function startingStateBehavior()
+	{
 		FlxG.switchState(() -> new TitleMenuState());
 	}
 }

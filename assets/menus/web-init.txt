@@ -1,0 +1,8 @@
+Hey.
+
+A weird flixel web thing where audio doesn't play
+unless you interact with the page
+requires me to have you click on the screen
+to continue.
+
+Cause uh, yeah.

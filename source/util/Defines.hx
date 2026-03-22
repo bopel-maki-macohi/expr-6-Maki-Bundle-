@@ -3,6 +3,7 @@ package util;
 class Defines
 {
 	public static final hashlink:Bool = MacroUtil.getDefine('hl') == '1';
+	public static final html5:Bool = MacroUtil.getDefine('html5') == '1';
 
 	public static final debug:Bool = MacroUtil.getDefine('debug') == '1';
 	public static final indev:Bool = MacroUtil.getDefine('indev') == '1';
