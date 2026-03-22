@@ -58,7 +58,7 @@ class Dreamland extends PlayState
 					bulletGroup.members.remove(bullet);
 					bullet.destroy();
 
-					FlxG.sound.play(AssetsUtil.sound('play/dreamland/explode${FlxG.random.int(1, 1)}'));
+					FlxG.sound.play(AssetsUtil.sound('play/dreamland/explode${FlxG.random.int(1, 3)}'));
 				}
 		}
 
