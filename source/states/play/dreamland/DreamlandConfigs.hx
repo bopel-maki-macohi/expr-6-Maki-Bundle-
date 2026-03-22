@@ -23,4 +23,18 @@ class DreamlandConfigs
 			hard: 7.5,
 		},
 	};
+
+	public static var GEHENNA(get, never):DreamlandConfig;
+	
+	static function get_GEHENNA():DreamlandConfig {
+		var c = DEFAULT;
+
+		c.enemySpeedDividers = {
+			easy: 5,
+			normal: 4,
+			hard: 3,
+		}
+
+		return c;
+	}
 }
