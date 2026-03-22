@@ -21,7 +21,10 @@ class InitState extends FlxState
 		if (!FlxG.signals.postUpdate.has(postUpdate))
 			FlxG.signals.postUpdate.add(postUpdate);
 
-		FlxG.switchState(() -> new SplashState());
+		if (Defines.html5)
+			FlxG.switchState(() -> new WebInitMenu(() -> new SplashState()));
+		else
+			FlxG.switchState(() -> new SplashState());
 	}
 
 	function postUpdate()
