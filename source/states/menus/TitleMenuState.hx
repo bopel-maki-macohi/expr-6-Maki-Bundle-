@@ -31,7 +31,7 @@ class TitleMenuState extends MenuState
 
 		bugReportText.onClick.add(function()
 		{
-			FlxG.openURL(Constants.LINK_GITHUB);
+			FlxG.openURL(Constants.LINK_GITHUB_ISSUES);
 		});
 
 		final menuItems = [play, about, credits, options];
@@ -74,23 +74,44 @@ class TitleMenuState extends MenuState
 		{
 			popup = new Popup('funding', true);
 
-			popup.scale.set(0.75, 0.75);
-			popup.updateHitbox();
 			popup.onClick.add(function()
 			{
 				FlxG.openURL(Constants.LINK_KOFI);
 			});
+		}
+		else if ((Defines.FORCE_UPDATE_POPUP) ? true : UpdateUtil.checkForUpdate())
+		{
+			final updateType = VersionUtil.compareVersions(VersionUtil.getRawVersion(), UpdateUtil.latestVersion);
 
-			if (popup.enabled)
+			switch (updateType)
 			{
-				add(popup);
-				bugReportText.x = 0;
+				case major, minor:
+					popup = new Popup('update-content', true);
+
+				case patch:
+					popup = new Popup('update-patch', true);
+
+				default:
 			}
+
+			if (popup != null)
+				popup.onClick.add(function()
+				{
+					FlxG.openURL(Constants.LINK_GITHUB_RELEASES);
+				});
+		}
+
+		if (popup != null && popup.enabled)
+		{
+			add(popup);
+			bugReportText.x = 0;
+
+			popup.scale.set(0.75, 0.75);
+			popup.updateHitbox();
 
 			popup.x = FlxG.width - (popup.width * 1);
 			popup.y = FlxG.height - (popup.height);
 		}
-		else if (UpdateUtil.checkForUpdate()) {}
 	}
 
 	override function update(elapsed:Float)
