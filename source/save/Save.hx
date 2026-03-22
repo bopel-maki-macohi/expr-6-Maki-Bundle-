@@ -27,10 +27,11 @@ class Save
 		trace('Binding save...');
 		FlxG.save.bind('MakiBundle', Application.current.meta.get('company'));
 
-		#if CLEAR_SAVE
-		trace('Clearing save...');
-		FlxG.save.erase();
-		#end
+		if (Defines.CLEAR_SAVE)
+		{
+			trace('Clearing save...');
+			FlxG.save.erase();
+		}
 
 		if (!Application.current.onExit.has(onExit))
 			Application.current.onExit.add(onExit);

@@ -17,10 +17,13 @@ class SplashState extends FlxState
 		splashTexture.screenCenter();
 		add(splashTexture);
 
-		#if debug
-		trace('Skipping splash...');
-		endSplash();
-		#else
+		if (Defines.debug)
+		{
+			trace('Skipping splash...');
+			endSplash();
+			return;
+		}
+
 		trace('Starting splash...');
 		FlxG.sound.play(AssetsUtil.sound('splash/splashJingle'), 1.0, false, null, true, function()
 		{
@@ -32,7 +35,6 @@ class SplashState extends FlxState
 				}
 			});
 		});
-		#end
 	}
 
 	public function endSplash()

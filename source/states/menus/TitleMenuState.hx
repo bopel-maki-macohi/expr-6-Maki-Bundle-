@@ -8,7 +8,7 @@ class TitleMenuState extends MenuState
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('title/logo'));
 	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(true), false);
 
-	public var funding:Funding = new Funding(#if FORCE_FUNDING_POPUP true #else null #end);
+	public var funding:Funding = new Funding((Defines.FORCE_FUNDING_POPUP) ? true : null);
 
 	public var play:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/play'));
 	public var about:ButtonSprite = new ButtonSprite(0, 0, AssetsUtil.image('title/about'));
