@@ -1,5 +1,6 @@
 package save;
 
+import haxe.Json;
 import lime.app.Application;
 import flixel.FlxG;
 
@@ -19,8 +20,59 @@ class Save
 			Reflect.setField(FlxG.save.data, field, value);
 	}
 
+	public static function getString(field:String):String
+	{
+		return Std.string(getField(field));
+	}
+
 	public static function getBool(field:String):Bool
+	{
 		return (getField(field) == true) ?? false;
+	}
+
+	public static function getFloat(field:String):Float
+	{
+		return Std.parseFloat(getString(field));
+	}
+
+	public static function getInt(field:String):Float
+	{
+		return Std.parseInt(getString(field));
+	}
+
+	public static function getData(field:String):Dynamic
+	{
+		try
+		{
+			return Json.parse(getString(field));
+		}
+		catch (e)
+		{
+			trace('Save "data" field retrival error: $e');
+			return null;
+		}
+	}
+
+	public static function getDataFieldField(datafield:String, field:String):Dynamic
+	{
+		if (getData(datafield) == null)
+			return null;
+
+		var data:Dynamic = getData(datafield);
+
+		return Reflect.field(data, field);
+	}
+
+	public static function setDataFieldField(datafield:String, field:String, value:Dynamic)
+	{
+		if (getData(datafield) == null)
+			return;
+
+		var data:Dynamic = getData(datafield);
+		Reflect.setField(data, field, value);
+
+		setField(datafield, data);
+	}
 
 	public static function init()
 	{
@@ -42,6 +94,12 @@ class Save
 			setField('shamelessPlug', true);
 		else if (getBool('shamelessPlug'))
 			setField('shamelessPlug', false);
+
+		if (getData('highscores') == null)
+			setField('highscores', {});
+
+		if (getDataFieldField('highscores', 'dreamland') == null)
+			setDataFieldField('highscores', 'dreamland', 0);
 
 		trace('Save initalization complete!');
 		trace(FlxG.save.data);
