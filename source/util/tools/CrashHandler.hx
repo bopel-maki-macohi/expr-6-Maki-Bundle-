@@ -138,7 +138,7 @@ class CrashHandler
 
         var fullContents:String = '';
 		fullContents += '=====================' + '\n';
-		fullContents += '     Crash Report    ' + '\n';
+		fullContents += 'Crash Report' + '\n';
 		fullContents += '=====================' + '\n\n';
 		fullContents += buildSystemInfo() + '\n';
 		fullContents += '\n=====================\n\n';
@@ -158,7 +158,13 @@ class CrashHandler
 		var driverInfo = FlxG?.stage?.context3D?.driverInfo ?? 'N/A';
 		fullContents += 'Driver info: ${driverInfo}\n';
 		#if sys
-		fullContents += 'Platform: ${Sys.systemName()}\n';
+		fullContents += 'Platform: ${Sys.systemName()}';
+		
+        #if hl
+        fullContents += ' (Hashlink)';
+        #end
+
+		fullContents += '\n';
 		#end
 		fullContents += 'Render method: ${renderMethod()}\n';
 		fullContents += '\n=====================\n\n';
