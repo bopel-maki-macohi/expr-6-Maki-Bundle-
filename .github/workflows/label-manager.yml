@@ -1,0 +1,31 @@
+name: github
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '.github/label-manager.yml'
+      - '.github/workflows/label-manager.yml'
+  pull_request:
+    paths:
+      - '.github/label-manager.yml'
+      - '.github/workflows/label-manager.yml'
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      -
+        name: Run Labeler
+        uses: crazy-max/ghaction-github-labeler@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/label-manager.yml
+          dry-run: ${{ github.event_name == 'pull_request' }}
+          exclude: |
+            help*
+            *issue

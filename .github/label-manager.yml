@@ -1,0 +1,24 @@
+- name: "bug"
+  color: "#d73a4a"
+  description: "Something isn't working as intended or expected"
+  # from_name: "n / a"
+  
+- name: "enhancement"
+  color: "#a22eef"
+  description: "New feature or request"
+  # from_name: "n / a"
+
+- name: "documentation"
+  color: "#0075ca"
+  description: "Improvements or additions to documentation"
+  # from_name: "n / a"
+
+- name: "duplicate"
+  color: "#cfd8d7"
+  description: "This issue or pull request already exists"
+  # from_name: "n / a"
+
+- name: "wontfix"
+  color: "#000000"
+  description: "This will not be worked on"
+  # from_name: "n / a"
