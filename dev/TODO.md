@@ -5,6 +5,7 @@
 - Nicom Minigame(s)
 
 - Sinco Minigame(s)
+    - Tirok Minigame based on [this old thing](https://scratch.mit.edu/projects/585057560/)
 
 - Dreamland
     - Utilize `background` config variable
