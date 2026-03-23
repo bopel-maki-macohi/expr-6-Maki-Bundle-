@@ -1,2 +1,5 @@
 Maki Bundle Developers
-Maki - Lead Programmer
+Maki - Lead Director, Programmer, Artist, Animator
+
+Tools Used
+JFXR - Sound Effects
