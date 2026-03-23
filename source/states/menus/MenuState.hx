@@ -11,5 +11,6 @@ class MenuState extends FlxState
 		super.create();
 
 		FlxG.camera.bgColor = FlxColor.WHITE;
+		FlxG.mouse.visible = true;
 	}
 }

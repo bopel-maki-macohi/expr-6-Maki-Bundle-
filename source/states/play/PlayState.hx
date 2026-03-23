@@ -24,6 +24,8 @@ class PlayState extends FlxState
 			FlxG.switchState(() -> new PlayMenuState());
 		});
         pauseText.color = FlxColor.WHITE;
+
+		FlxG.mouse.visible = false;
 	}
 
 	override function update(elapsed:Float)
