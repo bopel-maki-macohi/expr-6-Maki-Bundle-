@@ -18,7 +18,6 @@
     - Tirok Minigame based on [this old thing](https://scratch.mit.edu/projects/585057560/) : Aliotow / Alien Shootdown
 
 - Dreamland
-    - Utilize `background` config variable
     - More configs...
 
 # Settings
