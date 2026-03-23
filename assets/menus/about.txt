@@ -1,6 +1,1 @@
-Hello there! Welcome to the 0.1.1 patch update.
-
-Just a quick patch to fix the HTML5 version of the Game
-but on the github there's been some work put to that aswell.
-
-And that's all.
+WIP
