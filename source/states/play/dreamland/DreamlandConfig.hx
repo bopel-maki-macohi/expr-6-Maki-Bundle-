@@ -20,4 +20,5 @@ typedef DreamlandConfig =
 	},
 
 	?enemySkinScale:Float,
+	?background:String,
 }

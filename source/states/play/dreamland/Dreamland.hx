@@ -16,7 +16,7 @@ class Dreamland extends PlayState
 	public var enemyGroup:FlxTypedSpriteGroup<DreamlandEnemy> = new FlxTypedSpriteGroup<DreamlandEnemy>();
 	public var enemy_offscreen_padding:Float = 40;
 
-	public var bg = new FlxSprite(0, 0, AssetsUtil.image('play/dreamland/bg'));
+	public var bg = new FlxSprite(0, 0);
 
 	public var scoreText:ButtonText = new ButtonText('score', false, ButtonText.SCALE_HALF);
 	public var score:Int = 0;
@@ -35,6 +35,8 @@ class Dreamland extends PlayState
 		super.create();
 
 		add(bg);
+
+		bg.loadGraphic(AssetsUtil.image('play/dreamland/' + config.background ?? 'bg'));
 
 		bg.scale.set(2, 2);
 		bg.updateHitbox();
