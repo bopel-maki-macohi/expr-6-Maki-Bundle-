@@ -20,3 +20,6 @@
 
 - Mirror Mode
     - Flipped gameplay for the minigames
+
+- x2 Mode
+    - Double Speed gameplay for minigames
