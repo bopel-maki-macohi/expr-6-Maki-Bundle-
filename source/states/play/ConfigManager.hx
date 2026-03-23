@@ -12,11 +12,11 @@ class ConfigManager<T>
 		this.DEFAULT = DEFAULT;
 	}
 
-	public function makeConfig(changes:Map<String, Map<String, Dynamic>>):T
+	public function makeConfig(name:String, changes:Map<String, Map<String, Dynamic>>):T
 	{
 		var config:T = Reflect.copy(DEFAULT);
 
-		trace('Making $type config');
+		trace('Making $type config: $name');
 
 		for (field => fieldChanges in changes)
 		{
@@ -26,7 +26,7 @@ class ConfigManager<T>
 			if (Reflect.fields(Reflect.field(config, field)) == null)
 				continue;
 
-			trace(' * field: $field');
+			trace(' | field: $field');
 
 			for (subField => subFieldChange in fieldChanges)
 			{
@@ -38,13 +38,13 @@ class ConfigManager<T>
 				}
 				catch (e)
 				{
-					trace(' * * Error changing subfield($subField) : $e');
+					trace(' | * Error changing subfield($subField) : $e');
 
 					ididit = false;
 				}
 
 				if (ididit)
-					trace(' * * Changed subfield($subField) : $subFieldChange');
+					trace(' | * Changed subfield($subField) : $subFieldChange');
 			}
 		}
 

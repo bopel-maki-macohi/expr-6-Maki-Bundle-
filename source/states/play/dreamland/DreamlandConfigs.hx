@@ -35,7 +35,7 @@ class DreamlandConfigs
 		}
 	};
 
-	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig([
+	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig('gehenna', [
 		'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 97],
 		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 3],
 		'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
