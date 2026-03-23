@@ -35,10 +35,13 @@ class DreamlandConfigs
 		}
 	};
 
-	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig('gehenna', [
-		'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 97],
-		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 3],
-		'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
-		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
-	]);
+	public static var GEHENNA(get, never):DreamlandConfig;
+
+	static function get_GEHENNA()
+		return CONFIG_MANAGER.makeConfig('gehenna', [
+			'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 97],
+			'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 3],
+			'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
+			'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
+		]);
 }
