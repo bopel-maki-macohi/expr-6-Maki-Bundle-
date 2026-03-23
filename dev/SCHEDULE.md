@@ -1,0 +1,12 @@
+- 0.5.0
+    - Portilizen Minigame : Kiolets
+- 0.4.0
+    - Sinco Minigame : Spedat
+    - Regular Settings
+- 0.3.0
+    - Nicom Minigame : Seault
+    - Fun Settings
+- 0.2.0
+    - More Dreamland Configs
+    - Usage of `background` dreamland config field
+    - Tirok Minigame : Aliotow
