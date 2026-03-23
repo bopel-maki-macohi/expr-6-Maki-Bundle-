@@ -2,7 +2,7 @@ package states.play.dreamland;
 
 class DreamlandConfigs
 {
-	public static var DEFAULT:DreamlandConfig = {
+	public static final DEFAULT:DreamlandConfig = {
 		enemySpeedDividers: {
 			easy: 7,
 			normal: 5,
@@ -47,6 +47,8 @@ class DreamlandConfigs
 			normal: 'normal-gehenna',
 			hard: 'hard-gehenna',
 		}
+
+		c.background = 'default';
 
 		c.enemySkinScale = 1;
 
