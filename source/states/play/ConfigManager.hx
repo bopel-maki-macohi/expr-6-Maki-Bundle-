@@ -1,0 +1,42 @@
+package states.play;
+
+class ConfigManager<T>
+{
+	public var type:String = null;
+
+    public var DEFAULT:T;
+
+	public function new(?type:String, ?DEFAULT:T)
+	{
+		this.type = type;
+        this.DEFAULT = DEFAULT;
+	}
+
+	public function makeConfig(changes:Map<String, Map<String, Dynamic>>):T
+	{
+		var config:T = Reflect.copy(DEFAULT);
+
+		for (field => fieldChanges in changes)
+		{
+			if (!Reflect.fields(config).contains(field))
+				continue;
+
+			if (Reflect.fields(Reflect.field(config, field)) == null)
+				continue;
+
+			for (subField => subFieldChange in fieldChanges)
+			{
+				try
+				{
+					Reflect.setField(Reflect.field(config, field), subField, subFieldChange);
+				}
+				catch (e)
+				{
+					trace('Error modifying ${type ?? '[[UNKNOWN TYPE]]'} config field($field) subfield($subField) : $e');
+				}
+			}
+		}
+
+		return config;
+	}
+}

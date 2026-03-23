@@ -18,7 +18,9 @@ typedef DreamlandConfig =
 	{
 		easy:Float, hard:Float,
 	},
-
-	?enemySkinScale:Float,
-	?background:String,
+	?visuals:
+		{
+			?enemySkinScale:Float,
+			?background:String,
+		}
 }

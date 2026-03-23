@@ -2,6 +2,13 @@ package states.play.dreamland;
 
 class DreamlandConfigs
 {
+	static var CONFIG_MANAGER(get, never):ConfigManager<DreamlandConfig>;
+
+	static function get_CONFIG_MANAGER():ConfigManager<DreamlandConfig>
+	{
+		return new ConfigManager<DreamlandConfig>('dreamland', DEFAULT);
+	}
+
 	public static final DEFAULT:DreamlandConfig = {
 		enemySpeedDividers: {
 			easy: 7,
@@ -24,34 +31,10 @@ class DreamlandConfigs
 		},
 	};
 
-	public static var GEHENNA(get, never):DreamlandConfig;
-
-	static function get_GEHENNA():DreamlandConfig
-	{
-		var c = DEFAULT;
-
-		c.enemyScores = {
-			easy: 25,
-			normal: 54,
-			hard: 97,
-		}
-		
-		c.enemySpeedDividers = {
-			easy: 5,
-			normal: 4,
-			hard: 3,
-		}
-
-		c.enemySkins = {
-			easy: 'easy-gehenna',
-			normal: 'normal-gehenna',
-			hard: 'hard-gehenna',
-		}
-
-		c.background = 'default';
-
-		c.enemySkinScale = 1;
-
-		return c;
-	}
+	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig([
+		'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 97],
+		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 3],
+		'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
+		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
+	]);
 }
