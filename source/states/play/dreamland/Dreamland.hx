@@ -36,7 +36,7 @@ class Dreamland extends PlayState
 
 		add(bg);
 
-		bg.loadGraphic(AssetsUtil.image('play/dreamland/' + config.background ?? 'bg'));
+		bg.loadGraphic(AssetsUtil.image('play/dreamland/backgrounds/' + config.background ?? 'default'));
 
 		bg.scale.set(2, 2);
 		bg.updateHitbox();
