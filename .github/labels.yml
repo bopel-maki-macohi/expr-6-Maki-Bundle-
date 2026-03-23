@@ -1,8 +1,8 @@
-- name: "labelaction: bug report"
+- name: "action: bug report"
   color: "#005AB0"
-- name: "labelaction: github issue"
+- name: "action: github issue"
   color: "#005AB0"
-- name: "labelaction: pull request"
+- name: "action: enhancement"
   color: "#005AB0"
   
 - name: "type: bug"

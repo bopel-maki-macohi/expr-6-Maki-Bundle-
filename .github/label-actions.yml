@@ -1,1 +1,22 @@
 # Configuration for Label Actions - https://github.com/dessant/label-actions?tab=readme-ov-file#configuration
+
+'action: bug report':
+  unlabel:
+    - 'action: bug report'
+  label:
+    - 'type: bug'
+    - 'status: pending...'
+
+'action: github issue':
+  unlabel:
+    - 'action: github issue'
+  label:
+    - 'type: github issue'
+    - 'status: pending...'
+
+'action: enhancement':
+  unlabel:
+    - 'action: enhancement'
+  label:
+    - 'type: enhancement'
+    - 'status: pending...'
