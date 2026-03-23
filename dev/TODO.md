@@ -16,5 +16,7 @@
 - Menu Orientation
     - Menus can have multiple versions called orientations, if not all menus atleast have the title screen has it
 
+## Fun Settings
+
 - Mirror Mode
     - Flipped gameplay for the minigames
