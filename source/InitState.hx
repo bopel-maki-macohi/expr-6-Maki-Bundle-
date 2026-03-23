@@ -9,6 +9,11 @@ class InitState extends FlxState
 	{
 		super.create();
 
+		CrashHandler.errorSignal.add(function(error)
+		{
+			trace(error);
+		});
+
 		trace('curVersion: ' + VersionUtil.getVersion());
 		trace('curVersion (raw): ' + VersionUtil.getRawVersion());
 		UpdateUtil.checkForUpdate();
