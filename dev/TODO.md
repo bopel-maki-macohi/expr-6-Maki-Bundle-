@@ -1,5 +1,11 @@
 # Minigames
 
+- Portilizen Minigame(s)
+
+- Nicom Minigame(s)
+
+- Sinco Minigame(s)
+
 - Dreamland
     - Utilize `background` config variable
     - More configs...
