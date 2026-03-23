@@ -1,9 +1,9 @@
-name: Label Manager
+name: github
 
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - '.github/labels.yml'
       - '.github/workflows/label-manager.yml'
@@ -20,9 +20,15 @@ jobs:
       issues: write
     steps:
       -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
         name: Run Labeler
-        uses: crazy-max/ghaction-github-labeler@v6
+        uses: crazy-max/ghaction-github-labeler@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          yaml-file: '.github/labels.yml'
+          yaml-file: .github/labels.yml
           dry-run: ${{ github.event_name == 'pull_request' }}
+          # exclude: |
+            # help*
+            # *issue
