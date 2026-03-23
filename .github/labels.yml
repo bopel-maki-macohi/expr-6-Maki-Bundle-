@@ -13,7 +13,7 @@
   color: "#8D96A0"
 - name: "type: documentation"
   color: "#8D96A0"
-- name: "type: duplicate"
+- name: "type: discussion"
   color: "#8D96A0"
   
 - name: "status: pending..."
@@ -27,4 +27,6 @@
 - name: "status: stale"
   color: "#472D2A"
 - name: "status: unplanned"
+  color: "#2D4938"
+- name: "status: duplicate"
   color: "#2D4938"
