@@ -5,11 +5,11 @@ on:
     branches:
       - 'master'
     paths:
-      - '.github/label-manager.yml'
+      - '.github/labels.yml'
       - '.github/workflows/label-manager.yml'
   pull_request:
     paths:
-      - '.github/label-manager.yml'
+      - '.github/labels.yml'
       - '.github/workflows/label-manager.yml'
 
 jobs:
@@ -24,8 +24,5 @@ jobs:
         uses: crazy-max/ghaction-github-labeler@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          yaml-file: .github/label-manager.yml
+          yaml-file: '.github/labels.yml'
           dry-run: ${{ github.event_name == 'pull_request' }}
-          exclude: |
-            help*
-            *issue
