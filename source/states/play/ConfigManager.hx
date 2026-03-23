@@ -43,8 +43,8 @@ class ConfigManager<T>
 					ididit = false;
 				}
 
-				if (ididit)
-					trace(' | * Changed subfield($subField) : $subFieldChange');
+				// if (ididit)
+				// trace(' | * Changed subfield($subField) : $subFieldChange');
 			}
 		}
 
