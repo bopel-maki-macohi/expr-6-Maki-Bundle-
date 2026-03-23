@@ -29,6 +29,10 @@ class DreamlandConfigs
 			easy: 30,
 			hard: 7.5,
 		},
+		visuals: {
+			enemySkinScale: 2,
+			background: 'default'
+		}
 	};
 
 	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig([
