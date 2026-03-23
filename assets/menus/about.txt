@@ -1,10 +1,6 @@
-Hello there! Welcome to V0.1 of Maki Bundle!
-This update and some future updates are more proof of concepts, get people interested y'know?
+Hello there! Welcome to the 0.1.1 patch update.
 
-I really just wanna get the game on steam and then we can really get into just, getting a more polished game.
+Just a quick patch to fix the HTML5 version of the Game
+but on the github there's been some work put to that aswell.
 
-Anyway, uh, so far as of writing this it's still early development and there's no minigames, maybe I should give them a unique name...
-
-Anyway yeah no I got nothing to say.
-
-This'll probably change, SHOULD change.
+And that's all.
