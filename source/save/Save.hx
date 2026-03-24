@@ -102,7 +102,9 @@ class Save
 			setField('highscores', {});
 
 		if (getDataFieldField('highscores', 'dreamland') == null)
-			setDataFieldField('highscores', 'dreamland', {});
+			setDataFieldField('highscores', 'dreamland', {
+				"default": 0
+			});
 
 		var intDreamlandScore:Null<Int> = null;
 
