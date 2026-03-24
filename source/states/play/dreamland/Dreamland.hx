@@ -200,8 +200,6 @@ class Dreamland extends PlayState
 		if (config.methods?.spawnEnemy != null)
 			config.methods.spawnEnemy(newEnemy, player);
 
-		trace('Spawned enemy: ${newEnemy.enemySkin}');
-
 		enemyGroup.add(newEnemy);
 	}
 }
