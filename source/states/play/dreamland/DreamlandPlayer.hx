@@ -29,8 +29,6 @@ class DreamlandPlayer extends FlxSprite
 			i--;
 		}
 
-		trace('player(${this.playerSkin}) animations: ' + this.animation.getNameList());
-
 		animation.play('idle');
 
 		animation.onFinish.add(function(animName)

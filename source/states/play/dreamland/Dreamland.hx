@@ -132,8 +132,6 @@ class Dreamland extends PlayState
 
 						if (enemy.enemySkin == config.enemySkins.hard)
 							score += config.enemyScores.hard;
-
-						trace('Awarded score: ${score - prevS}');
 					}
 
 					FlxG.sound.play(AssetsUtil.sound('play/dreamland/explode${FlxG.random.int(1, 3)}'));
