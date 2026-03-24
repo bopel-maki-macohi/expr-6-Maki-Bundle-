@@ -32,7 +32,7 @@ class ConfigManager<T>
 				}
 				catch (e)
 				{
-					trace(' | * Error changing subfield($subField) : $e');
+					trace(' | | Error changing subfield($subField) : $e');
 
 					ididit = false;
 				}
