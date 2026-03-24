@@ -105,10 +105,13 @@ class Save
 			setDataFieldField('highscores', 'dreamland', {});
 
 		var intDreamlandScore:Null<Int> = null;
-		
-		try {
+
+		try
+		{
 			intDreamlandScore = cast getDataFieldField('highscores', 'dreamland');
-		} catch(e) {
+		}
+		catch (e)
+		{
 			intDreamlandScore = null;
 		}
 

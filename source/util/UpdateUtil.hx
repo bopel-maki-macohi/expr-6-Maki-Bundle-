@@ -6,7 +6,7 @@ class UpdateUtil
 {
 	static final httpLoc = 'https://raw.githubusercontent.com/bopel-maki-macohi/expr-6-Maki-Bundle-/refs/heads/master/Project.xml';
 
-    public static var latestVersion:String = '';
+	public static var latestVersion:String = '';
 
 	public static function checkForUpdate():Bool
 	{
@@ -30,17 +30,17 @@ class UpdateUtil
 
 			trace('latestVer : $latestVersion');
 
-            if (VersionUtil.getRawVersion() != latestVersion)
-                return true;
+			if (VersionUtil.getRawVersion() != latestVersion)
+				return true;
 
-            return false;
+			return false;
 		}
 
 		http.onError = function(error)
 		{
 			trace('error: $error');
 
-            return false;
+			return false;
 		}
 
 		http.request();

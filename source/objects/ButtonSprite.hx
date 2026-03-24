@@ -9,7 +9,7 @@ class ButtonSprite extends FlxSprite
 	public var enabled:Bool = true;
 
 	public var onClick:FlxSignal = new FlxSignal();
-    public var useDefaultOnClickCondition:Bool = true;
+	public var useDefaultOnClickCondition:Bool = true;
 
 	var overlapping:Bool = false;
 

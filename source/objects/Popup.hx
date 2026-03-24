@@ -9,7 +9,7 @@ class Popup extends ButtonSprite
 		super(0, 0, AssetsUtil.image('popups/$popup'));
 
 		this.enabled = enabled ?? false;
-		
+
 		onOverlap.add(function()
 		{
 			setColorTransform(1.2, 1.2, 1.2);

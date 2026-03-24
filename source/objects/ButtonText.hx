@@ -17,7 +17,7 @@ class ButtonText extends FlxText
 
 	override public function new(t:String, e:Bool = true, ?s:Null<Int>, ?x:Float, ?y:Float, ?fw:Float = 0)
 	{
-        this.enabled = e;
+		this.enabled = e;
 
 		super(x, y, fw, t, s ?? SCALE_MAIN);
 

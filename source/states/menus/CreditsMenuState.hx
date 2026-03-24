@@ -9,11 +9,11 @@ class CreditsMenuState extends AboutMenuState
 	{
 		super.create();
 
-        aboutText.text = AssetsUtil.getText('menus/credits.txt');
-        aboutText.screenCenter();
+		aboutText.text = AssetsUtil.getText('menus/credits.txt');
+		aboutText.screenCenter();
 
-        FlxG.camera.bgColor = FlxColor.BLACK;
-        back.color = FlxColor.WHITE;
-        aboutText.color = FlxColor.WHITE;
+		FlxG.camera.bgColor = FlxColor.BLACK;
+		back.color = FlxColor.WHITE;
+		aboutText.color = FlxColor.WHITE;
 	}
 }

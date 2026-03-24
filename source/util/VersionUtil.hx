@@ -22,7 +22,7 @@ class VersionUtil
 
 		if (versionASplit[0] != versionBSplit[0])
 			return major;
-		
+
 		if (versionASplit[1] != versionBSplit[1])
 			return minor;
 

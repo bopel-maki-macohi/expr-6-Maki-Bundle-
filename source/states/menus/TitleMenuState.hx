@@ -84,7 +84,8 @@ class TitleMenuState extends MenuState
 				FlxG.openURL(Constants.LINK_KOFI);
 			});
 		}
-		else if ((Defines.FORCE_UPDATE_POPUP) ? true : ((VersionUtil.getRawVersion() != UpdateUtil.latestVersion) && Defines.PRE_RELEASE == null))
+		else if ((Defines.FORCE_UPDATE_POPUP) ? true : ((VersionUtil.getRawVersion() != UpdateUtil.latestVersion)
+			&& Defines.PRE_RELEASE == null))
 		{
 			final updateType = VersionUtil.compareVersions(VersionUtil.getRawVersion(), UpdateUtil.latestVersion);
 
