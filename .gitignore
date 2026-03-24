@@ -3,5 +3,4 @@ export/
 
 .DS_Store
 
-CHANGES-base.md
-CHANGES.md
+CHANGES**.md

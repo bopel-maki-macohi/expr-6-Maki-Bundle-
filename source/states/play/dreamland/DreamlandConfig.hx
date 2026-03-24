@@ -22,5 +22,9 @@ typedef DreamlandConfig =
 		{
 			?enemySkinScale:Float,
 			?background:String,
+		},
+	?methods:
+		{
+			?spawnEnemy:(enemy:DreamlandEnemy, player:DreamlandPlayer)->Void,
 		}
 }

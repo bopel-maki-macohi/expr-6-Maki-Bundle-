@@ -180,6 +180,9 @@ class Dreamland extends PlayState
 		if (newEnemy.y > FlxG.height - newEnemy.height - enemy_offscreen_padding)
 			newEnemy.y = FlxG.height - newEnemy.height - enemy_offscreen_padding;
 
+		if (config.methods.spawnEnemy != null)
+			config.methods.spawnEnemy(newEnemy, player);
+
 		enemyGroup.add(newEnemy);
 	}
 }

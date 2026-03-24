@@ -2,42 +2,23 @@ package states.menus.configs;
 
 import flixel.FlxG;
 
-class DreamlandConfigMenuState extends BackMenuState
+class DreamlandConfigMenuState extends ConfigMenuState<DreamlandConfig>
 {
-	public var titleConfig:ButtonText = new ButtonText('Dreamland Config Menu', false, ButtonText.SCALE_MAIN);
-
-    public var defaultConfig:ButtonText = new ButtonText('Default', true, ButtonText.SCALE_HALF);
-    public var gehennaConfig:ButtonText = new ButtonText('Gehenna', true, ButtonText.SCALE_HALF);
-
-	override function create()
+	override function addConfigs()
 	{
-		super.create();
+		super.addConfigs();
 
-        titleConfig.screenCenter();
-        add(titleConfig);
-        titleConfig.y = 10;
+		titleConfig.text = 'Dreamland Config Menu';
 
-        defaultConfig.x = 10;
-        defaultConfig.y = titleConfig.y + titleConfig.height + 10;
+		makeConfigText('Default', DreamlandConfigs.DEFAULT);
+		makeConfigText('Gehenna', DreamlandConfigs.GEHENNA);
+		makeConfigText('Lues', DreamlandConfigs.LUES);
+	}
 
-        defaultConfig.screenCenter();
-        defaultConfig.x -= defaultConfig.width;
+	override function moveState(data:DreamlandConfig)
+	{
+		super.moveState(data);
 
-        gehennaConfig.setPosition(defaultConfig.x + (defaultConfig.width * 2), defaultConfig.y);
-
-		defaultConfig.onClick.add(function()
-		{
-			Constants.selectSfx();
-			FlxG.switchState(() -> new Dreamland(DreamlandConfigs.DEFAULT));
-		});
-
-		gehennaConfig.onClick.add(function()
-		{
-			Constants.selectSfx();
-			FlxG.switchState(() -> new Dreamland(DreamlandConfigs.GEHENNA));
-		});	
-        
-        add(defaultConfig);
-		add(gehennaConfig);
+		FlxG.switchState(() -> new Dreamland(data));
 	}
 }

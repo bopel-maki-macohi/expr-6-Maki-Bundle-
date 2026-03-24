@@ -1,5 +1,7 @@
 package states.play.dreamland;
 
+import flixel.FlxG;
+
 class DreamlandConfigs
 {
 	static var CONFIG_MANAGER(get, never):ConfigManager<DreamlandConfig>;
@@ -36,9 +38,24 @@ class DreamlandConfigs
 	};
 
 	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig('gehenna', [
-			'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 97],
-			'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 3],
-			'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
-			'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
-		]);
+		'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 97],
+		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 3],
+		'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
+		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
+	]);
+
+	public static final LUES:DreamlandConfig = CONFIG_MANAGER.makeConfig('lues', [
+		'enemyScores' => ['easy' => 17, 'normal' => 75, 'hard' => 130],
+		'enemySpeedDividers' => ['easy' => 6, 'normal' => 3, 'hard' => 2],
+		'enemySkins' => ['easy' => 'easy-lues', 'normal' => 'normal-lues', 'hard' => 'hard-lues'],
+		'enemyChances' => ['easy' => 25, 'hard' => 2.5],
+		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
+		'methods' => [
+			'spawnEnemy' => function(enemy:DreamlandEnemy, player:DreamlandPlayer)
+			{
+				if (enemy.enemySkin == 'hard-lues')
+					enemy.y = player.y * FlxG.random.float(0.95, 1.05);
+			}
+		]
+	]);
 }

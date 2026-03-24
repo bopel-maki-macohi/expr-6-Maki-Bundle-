@@ -28,9 +28,9 @@ class ChangesGenerator
 		final fullChangelogLink = '**Full Changelog**: https://github.com/bopel-maki-macohi/expr-6-Maki-Bundle-/compare/$gitVersion...$curVersion';
 		trace(fullChangelogLink);
 
-		var changes:Template = new Template(File.getContent('CHANGES-base.md'));
+		var changes:Template = new Template(File.getContent('CHANGES.md'));
 
-		File.saveContent('CHANGES.md', changes.execute({
+		File.saveContent('CHANGES-final.md', changes.execute({
 			aboutTxt: aboutTxt,
 			fullChangelogLink: fullChangelogLink,
 		}));
