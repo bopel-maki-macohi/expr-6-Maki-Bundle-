@@ -6,9 +6,11 @@ class ConfigMenuState<T> extends BackMenuState
 {
 	public var titleConfig:ButtonText = new ButtonText('Config Menu', false, ButtonText.SCALE_MAIN);
 
-	public var spacing:Float = 256;
+	public var spacingMultiplier:Float = 1.5;
 
 	private var i = 0;
+	private var x = 0.0;
+	private var y = 0.0;
 
 	override function create()
 	{
@@ -17,8 +19,11 @@ class ConfigMenuState<T> extends BackMenuState
 		add(titleConfig);
 		titleConfig.y = 10;
 
+		x = 10;
+		y = titleConfig.y + titleConfig.height + 10;
+
 		addConfigs();
-		
+
 		titleConfig.screenCenter(X);
 	}
 
@@ -26,8 +31,20 @@ class ConfigMenuState<T> extends BackMenuState
 
 	public function makeConfigText(configName:String, configData:T)
 	{
-		var configText = new ButtonText(configName, true, ButtonText.SCALE_HALF, 10, titleConfig.y + titleConfig.height + 10);
-		configText.x += spacing * i;
+		var configText = new ButtonText(configName, true, ButtonText.SCALE_HALF, x, y);
+
+		if ((x + configText.width * spacingMultiplier) > (FlxG.width - configText.width))
+		{
+			x = 10;
+			y += configText.height * spacingMultiplier;
+
+			configText.setPosition(x, y);
+		}
+		else
+		{
+			x += configText.width * spacingMultiplier;
+		}
+
 		add(configText);
 		configText.onClick.add(function()
 		{

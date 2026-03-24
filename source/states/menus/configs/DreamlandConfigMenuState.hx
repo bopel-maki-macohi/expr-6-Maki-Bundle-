@@ -10,6 +10,8 @@ class DreamlandConfigMenuState extends ConfigMenuState<DreamlandConfig>
 
 		titleConfig.text = 'Dreamland Config Menu';
 
+		spacingMultiplier = 10;
+
 		makeConfigText('Default', DreamlandConfigs.DEFAULT);
 		makeConfigText('Gehenna', DreamlandConfigs.GEHENNA);
 		makeConfigText('Lues', DreamlandConfigs.LUES);
