@@ -64,7 +64,7 @@ class DreamlandConfigs
 		'enemySpeedDividers' => ['easy' => 4, 'normal' => 3.5, 'hard' => 4],
 		'enemySkins' => ['easy' => 'easy-lues', 'normal' => 'normal-lues', 'hard' => 'hard-lues'],
 		'enemyChances' => ['easy' => 25, 'hard' => 2.5],
-		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna', 'player' => 'four_bullets'],
+		'visuals' => ['enemySkinScale' => 1, 'background' => 'lues', 'player' => 'four_bullets'],
 		'methods' => [
 			'spawnEnemy' => (enemy:DreamlandEnemy, player:DreamlandPlayer) ->
 			{
