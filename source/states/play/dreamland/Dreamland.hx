@@ -32,7 +32,7 @@ class Dreamland extends PlayState
 		this.config = config;
 		trace('Config: ${this.config.tweaks.id}');
 
-		highscore = Reflect.field(Save.getDataFieldField('highscores', 'dreamland'), this.config.tweaks.id);
+		highscore = Save.getHighscore('dreamland', config.tweaks.id);
 
 		if (highscore == null)
 			highscore = 0;
@@ -76,9 +76,7 @@ class Dreamland extends PlayState
 
 		if (score > highscore)
 			highscore = score;
-		Reflect.setField(Save.getDataFieldField('highscores', 'dreamland'), config.tweaks.id, highscore);
-
-		FlxG.watch.addQuick('saved highscore', Reflect.field(Save.getDataFieldField('highscores', 'dreamland'), config.tweaks.id));
+		Save.setHighscore('dreamland', config.tweaks.id, highscore);
 
 		scoreText.text = 'Score: $score | Highscore: ${highscore}';
 		scoreText.screenCenter();

@@ -14,7 +14,7 @@ class Aliotow extends PlayState
 		this.config = config;
 		trace('Config: ${this.config.tweaks.id}');
 
-		highscore = Reflect.field(Save.getDataFieldField('highscores', 'aliotow'), this.config.tweaks.id);
+		highscore = Save.getHighscore('aliotow', config.tweaks.id);
 
 		if (highscore == null)
 			highscore = 0;
@@ -31,7 +31,7 @@ class Aliotow extends PlayState
 
 		if (score > highscore)
 			highscore = score;
-		Reflect.setField(Save.getDataFieldField('highscores', 'aliotow'), config.tweaks.id, highscore);
+		Save.setHighscore('aliotow', config.tweaks.id, highscore);
 	}
 
 	override function unpausedUpdate()

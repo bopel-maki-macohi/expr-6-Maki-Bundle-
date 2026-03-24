@@ -1,81 +1,11 @@
 package save;
 
-import haxe.Json;
 import lime.app.Application;
 import flixel.FlxG;
 
 class Save
 {
-	public static function getField(field:String):Dynamic
-	{
-		if (FlxG.save.isBound)
-			return Reflect.field(FlxG.save.data, field);
-
-		return null;
-	}
-
-	public static function setField(field:String, value:Dynamic)
-	{
-		if (FlxG.save.isBound)
-			Reflect.setField(FlxG.save.data, field, value);
-	}
-
-	public static function getString(field:String):String
-	{
-		return Std.string(getField(field));
-	}
-
-	public static function getBool(field:String):Bool
-	{
-		return (getField(field) == true) ?? false;
-	}
-
-	public static function getFloat(field:String):Float
-	{
-		return Std.parseFloat(getString(field));
-	}
-
-	public static function getInt(field:String):Float
-	{
-		return Std.parseInt(getString(field));
-	}
-
-	public static function getData(field:String):Dynamic
-	{
-		try
-		{
-			// trace('Getting Save "data" field($field): ${getString(field)}');
-			return Json.parse(getString(field));
-		}
-		catch (e)
-		{
-			if (Defines.debug)
-				trace('Save "data" field($field) retrival error: $e');
-
-			return null;
-		}
-	}
-
-	public static function getDataFieldField(datafield:String, field:String):Dynamic
-	{
-		if (getData(datafield) == null)
-			return null;
-
-		var data:Dynamic = getData(datafield);
-
-		return Reflect.field(data, field);
-	}
-
-	public static function setDataFieldField(datafield:String, field:String, value:Dynamic)
-	{
-		if (getData(datafield) == null)
-			return;
-
-		var data:Dynamic = getData(datafield);
-		Reflect.setField(data, field, value);
-
-		setField(datafield, Json.stringify(data));
-	}
+	public static var data:SaveData = null;
 
 	public static function init()
 	{
@@ -88,58 +18,71 @@ class Save
 			FlxG.save.erase();
 		}
 
+		data = FlxG.save.data;
+
 		if (!Application.current.onExit.has(onExit))
 			Application.current.onExit.add(onExit);
 
 		trace('Setting save variables...');
 
-		if (getField('shamelessPlug') == null)
-			setField('shamelessPlug', true);
-		else if (getBool('shamelessPlug'))
-			setField('shamelessPlug', false);
+		if (data.shamelessPlug == null)
+			data.shamelessPlug = true;
+		else if (data.shamelessPlug)
+			data.shamelessPlug = false;
 
-		if (getData('highscores') == null)
-			setField('highscores', {});
-
-		if (getDataFieldField('highscores', 'dreamland') == null)
-			setDataFieldField('highscores', 'dreamland', {
-				"default": 0
-			});
+		if (data.highscores == null)
+			data.highscores = {
+				dreamland: {'default': 0},
+				aliotow: {'default': 0},
+			};
 
 		var intDreamlandScore:Null<Int> = null;
 
 		try
 		{
-			intDreamlandScore = cast getDataFieldField('highscores', 'dreamland');
+			intDreamlandScore = cast data.highscores.dreamland;
 		}
 		catch (e)
 		{
 			intDreamlandScore = null;
 		}
 
-		if (getString('version') == null || intDreamlandScore != null) // 0.1 - 0.1.1 saves
+		if (data.version == null || intDreamlandScore != null) // 0.1 - 0.1.1 saves
 		{
 			if (Std.isOfType(intDreamlandScore, Int))
-				setDataFieldField('highscores', 'dreamland', {
-					"default": intDreamlandScore
-				});
-			else
-				setDataFieldField('highscores', 'dreamland', {});
+				setHighscore('dreamland', 'default', intDreamlandScore);
 		}
 
-		if (Reflect.field(getDataFieldField('highscores', 'dreamland'), 'default') == null)
-			Reflect.setField(getDataFieldField('highscores', 'dreamland'), 'default', 0);
+		if (getHighscore('dreamland', 'default') == null)
+			setHighscore('dreamland', 'default', 0);
 
-		setField('version', VersionUtil.getRawVersion());
+		data.version = VersionUtil.getRawVersion();
 
 		trace('Save initalization complete!');
+
+		save();
 		trace(FlxG.save.data);
 	}
 
 	static function onExit(l:Int)
 	{
 		trace('Saving...');
+
+		save();
 		trace(FlxG.save.data);
+
 		FlxG.save.flush();
 	}
+
+	public static function save()
+	{
+		for (field in Reflect.fields(data))
+			Reflect.setField(FlxG.save.data, field, Reflect.field(data, field));
+	}
+
+	public static function getHighscore(minigame:String, config:String):Null<Int>
+		return Reflect.field(Reflect.field(data.highscores, minigame), config);
+
+	public static function setHighscore(minigame:String, config:String, value:Int = 0)
+		return Reflect.setField(Reflect.field(data.highscores, minigame), config, value);
 }

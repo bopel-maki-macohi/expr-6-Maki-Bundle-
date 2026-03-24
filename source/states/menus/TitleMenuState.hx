@@ -74,7 +74,7 @@ class TitleMenuState extends MenuState
 		for (i in 0...menuItems.length)
 			menuItems[i].onClick.add(Constants.selectSfx);
 
-		if ((Defines.FORCE_FUNDING_POPUP) ? true : Save.getBool('shamelessPlug'))
+		if ((Defines.FORCE_FUNDING_POPUP) ? true : Save.data.shamelessPlug)
 		{
 			popup = new Popup('funding', true);
 
