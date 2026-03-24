@@ -1,7 +1,6 @@
 package states.play.dreamland;
 
 import flixel.tweens.FlxEase;
-import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
 
@@ -49,6 +48,7 @@ class DreamlandConfigs
 		},
 		tweaks: {
 			bullets: 2,
+			id: 'default',
 		},
 	};
 
@@ -57,6 +57,7 @@ class DreamlandConfigs
 		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 2.5],
 		'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
 		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
+		'tweaks' => ['id' => 'gehenna',]
 	]);
 
 	public static final LUES:DreamlandConfig = CONFIG_MANAGER.makeConfig('lues', [
@@ -80,7 +81,7 @@ class DreamlandConfigs
 				return multipleHitEnemy(enemy, bullet);
 			}
 		],
-		'tweaks' => ['bullets' => 4]
+		'tweaks' => ['bullets' => 4, 'id' => 'lues',]
 	]);
 
 	public static final SHADOWS:DreamlandConfig = CONFIG_MANAGER.makeConfig('shadows', [
@@ -96,7 +97,7 @@ class DreamlandConfigs
 			},
 			'hitEnemy' => multipleHitEnemy,
 		],
-		'tweaks' => ['bullets' => 4]
+		'tweaks' => ['bullets' => 4, 'id' => 'shadows',]
 	]);
 
 	static function multipleHitEnemy(enemy:DreamlandEnemy, bullet:DreamlandBullet):Bool

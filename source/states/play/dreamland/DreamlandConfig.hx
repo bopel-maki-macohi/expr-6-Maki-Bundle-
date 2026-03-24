@@ -15,7 +15,7 @@ typedef DreamlandConfig =
 	methods:DreamlandConfigMethods,
 	tweaks:
 	{
-		bullets:Int,
+		bullets:Int, id:String,
 	},
 }
 

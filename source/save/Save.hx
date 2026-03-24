@@ -102,7 +102,18 @@ class Save
 			setField('highscores', {});
 
 		if (getDataFieldField('highscores', 'dreamland') == null)
-			setDataFieldField('highscores', 'dreamland', 0);
+			setDataFieldField('highscores', 'dreamland', {});
+
+		var intDreamlandScore:Null<Int> = cast getDataFieldField('highscores', 'dreamland');
+
+		if (getString('version') == null || intDreamlandScore != null) // 0.1 - 0.1.1 saves
+		{
+			setDataFieldField('highscores', 'dreamland', {
+				"default": intDreamlandScore
+			});
+		}
+
+		setField('version', VersionUtil.getRawVersion());
 
 		trace('Save initalization complete!');
 		trace(FlxG.save.data);

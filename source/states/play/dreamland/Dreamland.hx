@@ -28,6 +28,11 @@ class Dreamland extends PlayState
 		super();
 
 		this.config = config;
+
+		if (!Reflect.fields(highscores).contains(this.config.tweaks.id))
+		{
+			Reflect.setField(highscores, this.config.tweaks.id, 0);
+		}
 	}
 
 	override function create()
@@ -62,14 +67,21 @@ class Dreamland extends PlayState
 		add(pauseText);
 	}
 
+	public var highscores(get, never):Dynamic;
+
+	function get_highscores():Dynamic
+	{
+		return Save.getDataFieldField('highscores', 'dreamland');
+	}
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (score > Save.getDataFieldField('highscores', 'dreamland'))
-			Save.setDataFieldField('highscores', 'dreamland', score);
+		if (score > Reflect.field(highscores, config.tweaks.id))
+			Reflect.setField(highscores, config.tweaks.id, score);
 
-		scoreText.text = 'Score: $score | Highscore: ${Save.getDataFieldField('highscores', 'dreamland')}';
+		scoreText.text = 'Score: $score | Highscore: ${Reflect.field(highscores, config.tweaks.id)}';
 		scoreText.screenCenter();
 		scoreText.y = 10;
 
