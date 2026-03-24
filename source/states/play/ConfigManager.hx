@@ -1,9 +1,10 @@
 package states.play;
 
+import haxe.Json;
+
 class ConfigManager<T>
 {
 	public var type:String = null;
-
 
 	public function new(?type:String)
 	{
@@ -41,5 +42,19 @@ class ConfigManager<T>
 		}
 
 		return config;
+	}
+
+	public function getFile(s:String):T
+	{
+		try
+		{
+			return Json.parse(AssetsUtil.getText('play/$type/configs/$s.json'));
+		}
+		catch (e)
+		{
+			trace(e);
+		}
+
+		return null;
 	}
 }

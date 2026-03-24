@@ -1,0 +1,30 @@
+{
+    "enemyScores": {
+        "normal": 54,
+        "hard": 70,
+        "easy": 25
+    },
+    "enemyChances": {
+        "hard": 7.5,
+        "easy": 30
+    },
+    "enemySkins": {
+        "normal": "normal-gehenna",
+        "hard": "hard-gehenna",
+        "easy": "easy-gehenna"
+    },
+    "tweaks": {
+        "id": "gehenna",
+        "bullets": 2
+    },
+    "enemySpeedDividers": {
+        "normal": 4,
+        "hard": 2.5,
+        "easy": 5
+    },
+    "visuals": {
+        "enemySkinScale": 1,
+        "background": "gehenna",
+        "player": "default"
+    }
+}

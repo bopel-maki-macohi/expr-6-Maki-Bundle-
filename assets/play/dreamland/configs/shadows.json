@@ -1,0 +1,30 @@
+{
+    "enemyScores": {
+        "normal": 75,
+        "hard": 90,
+        "easy": 45
+    },
+    "enemyChances": {
+        "hard": 3,
+        "easy": 36
+    },
+    "enemySkins": {
+        "normal": "normal-shadows",
+        "hard": "hard-shadows",
+        "easy": "easy-shadows"
+    },
+    "tweaks": {
+        "id": "shadows",
+        "bullets": 4
+    },
+    "enemySpeedDividers": {
+        "normal": 5,
+        "hard": 3,
+        "easy": 8
+    },
+    "visuals": {
+        "enemySkinScale": 2,
+        "background": "shadows",
+        "player": "four_bullets"
+    }
+}

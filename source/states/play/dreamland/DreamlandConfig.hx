@@ -7,22 +7,22 @@ typedef DreamlandConfig =
 	enemySkins:DreamlandEnemyDifficultys<String>,
 	enemyChances:DreamlandEnemyDifficultys<Float>,
 
-	visuals:
+	?visuals:
 	{
-		enemySkinScale:Float, background:String, player:String,
+		?enemySkinScale:Float, ?background:String, ?player:String,
 	},
 
-	methods:DreamlandConfigMethods,
-	tweaks:
+	?methods:DreamlandConfigMethods,
+	?tweaks:
 	{
-		bullets:Int, id:String,
+		?bullets:Int, ?id:String,
 	},
 }
 
 typedef DreamlandConfigMethods =
 {
-	spawnEnemy:(enemy:DreamlandEnemy, player:DreamlandPlayer) -> Void,
-	hitEnemy:(enemy:DreamlandEnemy, bullet:DreamlandBullet) -> Bool,
+	?spawnEnemy:(enemy:DreamlandEnemy, player:DreamlandPlayer) -> Void,
+	?hitEnemy:(enemy:DreamlandEnemy, bullet:DreamlandBullet) -> Bool,
 }
 
 typedef DreamlandEnemyDifficultys<T> =

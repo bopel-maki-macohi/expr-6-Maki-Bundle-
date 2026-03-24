@@ -1,0 +1,30 @@
+{
+    "enemyScores": {
+        "normal": 30,
+        "hard": 60,
+        "easy": 10
+    },
+    "enemyChances": {
+        "hard": 7.5,
+        "easy": 30
+    },
+    "enemySkins": {
+        "normal": "normal",
+        "hard": "hard",
+        "easy": "easy"
+    },
+    "tweaks": {
+        "id": "default",
+        "bullets": 2
+    },
+    "enemySpeedDividers": {
+        "normal": 5,
+        "hard": 3,
+        "easy": 7
+    },
+    "visuals": {
+        "enemySkinScale": 2,
+        "background": "default",
+        "player": "default"
+    }
+}

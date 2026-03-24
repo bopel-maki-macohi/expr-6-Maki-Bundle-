@@ -1,0 +1,30 @@
+{
+    "enemyScores": {
+        "normal": 65,
+        "hard": 75,
+        "easy": 34
+    },
+    "enemyChances": {
+        "hard": 2.5,
+        "easy": 25
+    },
+    "enemySkins": {
+        "normal": "normal-lues",
+        "hard": "hard-lues",
+        "easy": "easy-lues"
+    },
+    "tweaks": {
+        "id": "lues",
+        "bullets": 4
+    },
+    "enemySpeedDividers": {
+        "normal": 3.5,
+        "hard": 4,
+        "easy": 4
+    },
+    "visuals": {
+        "enemySkinScale": 1,
+        "background": "lues",
+        "player": "four_bullets"
+    }
+}
