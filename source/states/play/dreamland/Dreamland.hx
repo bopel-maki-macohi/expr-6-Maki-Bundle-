@@ -28,6 +28,7 @@ class Dreamland extends PlayState
 		super();
 
 		this.config = config;
+		trace('Config: ${config.tweaks.id}');
 
 		highscore = Reflect.field(Save.getDataFieldField('highscores', 'dreamland'), config.tweaks.id);
 	}

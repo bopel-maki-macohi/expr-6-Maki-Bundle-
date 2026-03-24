@@ -10,10 +10,10 @@ class DreamlandConfigs
 
 	static function get_CONFIG_MANAGER():ConfigManager<DreamlandConfig>
 	{
-		return new ConfigManager<DreamlandConfig>('dreamland', DEFAULT);
+		return new ConfigManager<DreamlandConfig>('dreamland');
 	}
 
-	public static final DEFAULT:DreamlandConfig = {
+	public static var DEFAULT:DreamlandConfig = {
 		enemySpeedDividers: {
 			easy: 7,
 			normal: 5,
@@ -52,7 +52,7 @@ class DreamlandConfigs
 		},
 	};
 
-	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig('gehenna', [
+	public static var GEHENNA(get, never):DreamlandConfig = CONFIG_MANAGER.makeConfig(DEFAULT, 'gehenna', [
 		'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 70],
 		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 2.5],
 		'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
@@ -60,7 +60,7 @@ class DreamlandConfigs
 		'tweaks' => ['id' => 'gehenna',]
 	]);
 
-	public static final LUES:DreamlandConfig = CONFIG_MANAGER.makeConfig('lues', [
+	public static var LUES:DreamlandConfig = CONFIG_MANAGER.makeConfig(DEFAULT, 'lues', [
 		'enemyScores' => ['easy' => 34, 'normal' => 65, 'hard' => 75],
 		'enemySpeedDividers' => ['easy' => 4, 'normal' => 3.5, 'hard' => 4],
 		'enemySkins' => ['easy' => 'easy-lues', 'normal' => 'normal-lues', 'hard' => 'hard-lues'],
@@ -84,7 +84,7 @@ class DreamlandConfigs
 		'tweaks' => ['bullets' => 4, 'id' => 'lues',]
 	]);
 
-	public static final SHADOWS:DreamlandConfig = CONFIG_MANAGER.makeConfig('shadows', [
+	public static var SHADOWS:DreamlandConfig = CONFIG_MANAGER.makeConfig(DEFAULT, 'shadows', [
 		'enemyScores' => ['easy' => 45, 'normal' => 75, 'hard' => 90],
 		'enemySpeedDividers' => ['easy' => 8, 'normal' => 5, 'hard' => 3],
 		'enemySkins' => ['easy' => 'easy-shadows', 'normal' => 'normal-shadows', 'hard' => 'hard-shadows'],

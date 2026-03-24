@@ -4,17 +4,15 @@ class ConfigManager<T>
 {
 	public var type:String = null;
 
-	public var DEFAULT:T;
 
-	public function new(?type:String, ?DEFAULT:T)
+	public function new(?type:String)
 	{
 		this.type = type ?? '[[UNKNOWN TYPE]]';
-		this.DEFAULT = DEFAULT;
 	}
 
-	public function makeConfig(name:String, changes:Map<String, Map<String, Dynamic>>):T
+	public function makeConfig(DEFAULT:T, name:String, changes:Map<String, Map<String, Dynamic>>):T
 	{
-		var config:T = Reflect.copy(DEFAULT);
+		var config:T = DEFAULT;
 
 		trace('Making $type config: $name');
 

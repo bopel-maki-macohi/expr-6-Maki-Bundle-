@@ -13,8 +13,11 @@ class DreamlandConfigMenuState extends ConfigMenuState<DreamlandConfig>
 		spacingMultiplier = 2;
 
 		makeConfigText('Default', DreamlandConfigs.DEFAULT);
+
 		makeConfigText('Gehenna', DreamlandConfigs.GEHENNA);
+
 		makeConfigText('Lues', DreamlandConfigs.LUES);
+		
 		makeConfigText('Shadows', DreamlandConfigs.SHADOWS);
 	}
 

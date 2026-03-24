@@ -1,5 +1,6 @@
 package states.menus.configs;
 
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxG;
 
 class ConfigMenuState<T> extends BackMenuState
@@ -7,6 +8,8 @@ class ConfigMenuState<T> extends BackMenuState
 	public var titleConfig:ButtonText = new ButtonText('Config Menu', false, ButtonText.SCALE_MAIN);
 
 	public var spacingMultiplier:Float = 1.5;
+
+	public var configTexts:FlxTypedGroup<ButtonText>;
 
 	private var i = 0;
 	private var x = 0.0;
@@ -21,6 +24,9 @@ class ConfigMenuState<T> extends BackMenuState
 
 		x = 10;
 		y = titleConfig.y + titleConfig.height + 10;
+
+		configTexts = new FlxTypedGroup<ButtonText>();
+		add(configTexts);
 
 		addConfigs();
 
@@ -47,7 +53,7 @@ class ConfigMenuState<T> extends BackMenuState
 		else
 			x += addValueW;
 
-		add(configText);
+		configTexts.add(configText);
 		configText.onClick.add(function()
 		{
 			if (configData != null)
