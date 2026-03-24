@@ -26,6 +26,8 @@ class InitState extends FlxState
 		if (!FlxG.signals.postUpdate.has(postUpdate))
 			FlxG.signals.postUpdate.add(postUpdate);
 
+		FlxG.stage.window.title = '${FlxG.stage.application.meta.get('title')} ${VersionUtil.getVersion()}';
+
 		if (Defines.html5)
 			FlxG.switchState(() -> new WebInitMenu(() -> FlxG.switchState(() -> new SplashState())));
 		else
