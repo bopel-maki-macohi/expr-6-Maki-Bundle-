@@ -21,7 +21,8 @@ class PlayState extends FlxState
 		pauseText.screenCenter();
 		pauseText.onClick.add(function()
 		{
-			FlxG.switchState(() -> new PlayMenuState());
+			if (paused)
+				FlxG.switchState(() -> new PlayMenuState());
 		});
 		pauseText.color = FlxColor.WHITE;
 
