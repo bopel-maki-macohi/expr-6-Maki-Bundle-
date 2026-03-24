@@ -30,3 +30,5 @@
   color: "#2D4938"
 - name: "status: duplicate"
   color: "#2D4938"
+- name: "status: implemented"
+  color: "#2D4938"
