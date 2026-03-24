@@ -7,6 +7,4 @@
     - Nicom Minigame : Seault
     - Fun Settings
 - 0.2.0
-    - More Dreamland Configs
-    - Usage of `background` dreamland config field
     - Tirok Minigame : Aliotow
