@@ -13,6 +13,7 @@ class DreamlandConfigMenuState extends ConfigMenuState<DreamlandConfig>
 		makeConfigText('Default', DreamlandConfigs.DEFAULT);
 		makeConfigText('Gehenna', DreamlandConfigs.GEHENNA);
 		makeConfigText('Lues', DreamlandConfigs.LUES);
+		makeConfigText('Shadows', DreamlandConfigs.SHADOWS);
 	}
 
 	override function moveState(data:DreamlandConfig)

@@ -77,21 +77,44 @@ class DreamlandConfigs
 			{
 				if (enemy.enemySkin != 'hard-lues')
 					return true;
-				enemy.setColorTransform(2, 2, 2);
-				FlxTween.tween(enemy.colorTransform, {
-					redMultiplier: 1,
-					greenMultiplier: 1,
-					blueMultiplier: 1,
-				}, .1 * enemy.data.hits, {
-					ease: FlxEase.sineInOut
-				});
-
-				enemy.data.hits--;
-				if (enemy.data.hits > 0)
-					return false;
-				return true;
+				return multipleHitEnemy(enemy, bullet);
 			}
 		],
 		'tweaks' => ['bullets' => 4]
 	]);
+
+	public static final SHADOWS:DreamlandConfig = CONFIG_MANAGER.makeConfig('shadows', [
+		'enemyScores' => ['easy' => 45, 'normal' => 75, 'hard' => 90],
+		'enemySpeedDividers' => ['easy' => 8, 'normal' => 5, 'hard' => 3],
+		'enemySkins' => ['easy' => 'easy-shadows', 'normal' => 'normal-shadows', 'hard' => 'hard-shadows'],
+		'enemyChances' => ['easy' => 36, 'hard' => 3],
+		'visuals' => ['background' => 'shadows', 'player' => 'four_bullets'],
+		'methods' => [
+			'spawnEnemy' => (enemy:DreamlandEnemy, player:DreamlandPlayer) ->
+			{
+				enemy.data.hits = 3;
+			},
+			'hitEnemy' => multipleHitEnemy,
+		],
+		'tweaks' => ['bullets' => 4]
+	]);
+
+	static function multipleHitEnemy(enemy:DreamlandEnemy, bullet:DreamlandBullet):Bool
+	{
+		enemy.setColorTransform(2, 2, 2);
+
+		FlxTween.tween(enemy.colorTransform, {
+			redMultiplier: 1,
+			greenMultiplier: 1,
+			blueMultiplier: 1,
+		}, .1 * enemy.data.hits, {
+			ease: FlxEase.sineInOut
+		});
+
+		enemy.data.hits--;
+		if (enemy.data.hits > 0)
+			return false;
+
+		return true;
+	}
 }
