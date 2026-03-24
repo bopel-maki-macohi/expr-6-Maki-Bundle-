@@ -104,7 +104,13 @@ class Save
 		if (getDataFieldField('highscores', 'dreamland') == null)
 			setDataFieldField('highscores', 'dreamland', {});
 
-		var intDreamlandScore:Null<Int> = cast getDataFieldField('highscores', 'dreamland');
+		var intDreamlandScore:Null<Int> = null;
+		
+		try {
+			intDreamlandScore = cast getDataFieldField('highscores', 'dreamland');
+		} catch(e) {
+			intDreamlandScore = null;
+		}
 
 		if (getString('version') == null || intDreamlandScore != null) // 0.1 - 0.1.1 saves
 		{
