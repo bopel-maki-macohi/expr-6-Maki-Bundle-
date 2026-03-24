@@ -41,15 +41,15 @@ class DreamlandConfigs
 	};
 
 	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig('gehenna', [
-		'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 97],
-		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 3],
+		'enemyScores' => ['easy' => 25, 'normal' => 54, 'hard' => 70],
+		'enemySpeedDividers' => ['easy' => 5, 'normal' => 4, 'hard' => 2.5],
 		'enemySkins' => ['easy' => 'easy-gehenna', 'normal' => 'normal-gehenna', 'hard' => 'hard-gehenna'],
 		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
 	]);
 
 	public static final LUES:DreamlandConfig = CONFIG_MANAGER.makeConfig('lues', [
-		'enemyScores' => ['easy' => 17, 'normal' => 75, 'hard' => 130],
-		'enemySpeedDividers' => ['easy' => 6, 'normal' => 3, 'hard' => 2],
+		'enemyScores' => ['easy' => 8, 'normal' => 27, 'hard' => 78],
+		'enemySpeedDividers' => ['easy' => 8, 'normal' => 6, 'hard' => 2.25],
 		'enemySkins' => ['easy' => 'easy-lues', 'normal' => 'normal-lues', 'hard' => 'hard-lues'],
 		'enemyChances' => ['easy' => 25, 'hard' => 2.5],
 		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
