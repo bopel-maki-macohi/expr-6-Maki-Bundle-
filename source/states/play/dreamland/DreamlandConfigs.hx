@@ -53,6 +53,8 @@ class DreamlandConfigs
 		'methods' => [
 			'spawnEnemy' => function(enemy:DreamlandEnemy, player:DreamlandPlayer)
 			{
+				trace('hi');
+
 				if (enemy.enemySkin == 'hard-lues')
 					enemy.y = player.y * FlxG.random.float(0.95, 1.05);
 			}

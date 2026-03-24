@@ -20,12 +20,6 @@ class ConfigManager<T>
 
 		for (field => fieldChanges in changes)
 		{
-			if (!Reflect.fields(config).contains(field))
-				continue;
-
-			if (Reflect.fields(Reflect.field(config, field)) == null)
-				continue;
-
 			trace(' | field: $field');
 
 			for (subField => subFieldChange in fieldChanges)
