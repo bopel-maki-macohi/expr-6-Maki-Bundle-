@@ -23,22 +23,24 @@ class Dreamland extends PlayState
 
 	public var config:DreamlandConfig;
 
+	public var highscore:Null<Int> = null;
+	
 	override public function new(config:DreamlandConfig)
 	{
 		super();
 
 		this.config = config;
-		trace('Config: ${config.tweaks.id}');
+		trace('Config: ${this.config.tweaks.id}');
 
-		highscore = Reflect.field(Save.getDataFieldField('highscores', 'dreamland'), config.tweaks.id);
+		highscore = Reflect.field(Save.getDataFieldField('highscores', 'dreamland'), this.config.tweaks.id);
+
+		if (highscore == null)
+			highscore = 0;
 	}
 
 	override function create()
 	{
 		super.create();
-
-		if (highscore == null)
-			highscore = 0;
 
 		this.maxBullets = config.tweaks?.bullets ?? 2;
 
@@ -68,8 +70,6 @@ class Dreamland extends PlayState
 		add(pauseText);
 	}
 
-	public var highscore:Null<Int> = null;
-
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -77,6 +77,8 @@ class Dreamland extends PlayState
 		if (score > highscore)
 			highscore = score;
 		Reflect.setField(Save.getDataFieldField('highscores', 'dreamland'), config.tweaks.id, highscore);
+
+		FlxG.watch.addQuick('saved highscore', Reflect.field(Save.getDataFieldField('highscores', 'dreamland'), config.tweaks.id));
 
 		scoreText.text = 'Score: $score | Highscore: ${highscore}';
 		scoreText.screenCenter();

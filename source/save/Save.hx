@@ -117,10 +117,16 @@ class Save
 
 		if (getString('version') == null || intDreamlandScore != null) // 0.1 - 0.1.1 saves
 		{
-			setDataFieldField('highscores', 'dreamland', {
-				"default": intDreamlandScore
-			});
+			if (Std.isOfType(intDreamlandScore, Int))
+				setDataFieldField('highscores', 'dreamland', {
+					"default": intDreamlandScore
+				});
+			else
+				setDataFieldField('highscores', 'dreamland', {});
 		}
+
+		if (Reflect.field(getDataFieldField('highscores', 'dreamland'), 'default') == null)
+			Reflect.setField(getDataFieldField('highscores', 'dreamland'), 'default', 0);
 
 		setField('version', VersionUtil.getRawVersion());
 

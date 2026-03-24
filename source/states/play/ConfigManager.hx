@@ -15,6 +15,9 @@ class ConfigManager<T>
 	{
 		var config:T = DEFAULT;
 
+		if (Reflect.field(Save.getDataFieldField('highscores', 'dreamland'), type) == null)
+			Reflect.setField(Save.getDataFieldField('highscores', type), name, 0);
+
 		trace('Making $type config: $name');
 
 		for (field => fieldChanges in changes)
