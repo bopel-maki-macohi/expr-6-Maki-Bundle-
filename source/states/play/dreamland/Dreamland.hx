@@ -121,16 +121,16 @@ class Dreamland extends PlayState
 					{
 						enemyGroup.members.remove(enemy);
 						enemy.destroy();
-					}
 
-					if (enemy.enemySkin == config.enemySkins.easy)
-						score += config.enemyScores.easy;
-					else if (enemy.enemySkin == config.enemySkins.normal)
-						score += config.enemyScores.normal;
-					else if (enemy.enemySkin == config.enemySkins.hard)
-						score += config.enemyScores.hard;
-					else
-						score -= 1;
+						if (enemy.enemySkin == config.enemySkins.easy)
+							score += config.enemyScores.easy;
+						else if (enemy.enemySkin == config.enemySkins.normal)
+							score += config.enemyScores.normal;
+						else if (enemy.enemySkin == config.enemySkins.hard)
+							score += config.enemyScores.hard;
+						else
+							score -= 1;
+					}
 
 					FlxG.sound.play(AssetsUtil.sound('play/dreamland/explode${FlxG.random.int(1, 3)}'));
 				}
