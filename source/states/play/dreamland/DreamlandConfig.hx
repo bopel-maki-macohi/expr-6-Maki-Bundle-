@@ -8,14 +8,16 @@ typedef DreamlandConfig =
 	enemyChances:DreamlandEnemyDifficultys<Float>,
 
 	?visuals:
-	{
-		?enemySkinScale:Float, ?background:String, ?player:String,
-	},
+		{
+			?enemySkinScale:Float,
+			?background:String,
+			?player:String,
+		},
 
 	?methods:DreamlandConfigMethods,
-	?tweaks:
+	tweaks:
 	{
-		?bullets:Int, ?id:String,
+		?bullets:Int, id:String,
 	},
 }
 

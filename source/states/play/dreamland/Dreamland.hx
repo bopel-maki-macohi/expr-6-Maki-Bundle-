@@ -44,7 +44,7 @@ class Dreamland extends PlayState
 
 		add(bg);
 
-		bg.loadGraphic(AssetsUtil.image('play/dreamland/backgrounds/' + config?.visuals?.background ?? 'default'));
+		bg.loadGraphic(AssetsUtil.image('play/dreamland/backgrounds/' + config.visuals?.background ?? 'default'));
 
 		bg.scale.set(2, 2);
 		bg.updateHitbox();
@@ -120,7 +120,7 @@ class Dreamland extends PlayState
 				{
 					var res = true;
 
-					if (config.methods.hitEnemy != null)
+					if (config.methods?.hitEnemy != null)
 						res = config.methods.hitEnemy(enemy, bullet);
 
 					bulletGroup.members.remove(bullet);
@@ -196,7 +196,7 @@ class Dreamland extends PlayState
 		else if (FlxG.random.bool(config.enemyChances.easy))
 			enemySkin = config.enemySkins.easy;
 
-		var newEnemy:DreamlandEnemy = new DreamlandEnemy(enemySkin, config.visuals.enemySkinScale);
+		var newEnemy:DreamlandEnemy = new DreamlandEnemy(enemySkin, config.visuals?.enemySkinScale ?? null);
 
 		newEnemy.setPosition(FlxG.width + newEnemy.width * 2, player.y + FlxG.random.float(-240, 240));
 		if (newEnemy.y < 0 + enemy_offscreen_padding)
