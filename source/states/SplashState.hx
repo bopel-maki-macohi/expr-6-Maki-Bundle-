@@ -46,6 +46,13 @@ class SplashState extends FlxState
 
 	public static function startingStateBehavior()
 	{
-		FlxG.switchState(() -> new TitleMenuState());
+		switch (Defines.STARTING_STATE)
+		{
+			case 'playmenu':
+				FlxG.switchState(() -> new PlayMenuState());
+
+			default:
+				FlxG.switchState(() -> new TitleMenuState());
+		}
 	}
 }

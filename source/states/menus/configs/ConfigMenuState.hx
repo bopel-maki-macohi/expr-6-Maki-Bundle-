@@ -33,17 +33,19 @@ class ConfigMenuState<T> extends BackMenuState
 	{
 		var configText = new ButtonText(configName, true, ButtonText.SCALE_HALF, x, y);
 
-		if ((x + configText.width * spacingMultiplier) > (FlxG.width - configText.width))
-		{
-			x = 10;
-			y += configText.height * spacingMultiplier;
+		final addValueW = configText.width * spacingMultiplier;
+		final addValueH = configText.height * spacingMultiplier;
 
-			configText.setPosition(x, y);
+		if ((x + addValueW) > (FlxG.width - configText.width))
+		{
+			y += addValueH;
+			configText.setPosition(10, y);
+
+			x = configText.x + addValueW;
+
 		}
 		else
-		{
-			x += configText.width * spacingMultiplier;
-		}
+			x += addValueW;
 
 		add(configText);
 		configText.onClick.add(function()

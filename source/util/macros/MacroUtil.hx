@@ -10,7 +10,7 @@ class MacroUtil
 
 		try
 		{
-			value = haxe.macro.Context.definedValue(key);
+			value = haxe.macro.Context.definedValue(key).split('=')[0];
 		}
 		catch (_) {}
 
