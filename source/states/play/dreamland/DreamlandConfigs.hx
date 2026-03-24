@@ -34,6 +34,9 @@ class DreamlandConfigs
 		visuals: {
 			enemySkinScale: 2,
 			background: 'default'
+		},
+		methods: {
+			spawnEnemy: (enemy, player) -> {}
 		}
 	};
 
@@ -51,10 +54,9 @@ class DreamlandConfigs
 		'enemyChances' => ['easy' => 25, 'hard' => 2.5],
 		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
 		'methods' => [
-			'spawnEnemy' => function(enemy:DreamlandEnemy, player:DreamlandPlayer)
+			'spawnEnemy' => (enemy, player) ->
 			{
 				trace('hi');
-
 				if (enemy.enemySkin == 'hard-lues')
 					enemy.y = player.y * FlxG.random.float(0.95, 1.05);
 			}
