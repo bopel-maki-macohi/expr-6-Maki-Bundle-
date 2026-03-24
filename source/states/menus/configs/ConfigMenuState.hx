@@ -48,12 +48,24 @@ class ConfigMenuState<T> extends BackMenuState
 		add(configText);
 		configText.onClick.add(function()
 		{
-			Constants.selectSfx();
-			moveState(configData);
+			if (configData != null)
+			{
+				Constants.selectSfx();
+				moveState(configData);
+			}
 		});
+
+		if (configData == null)
+			configText.alpha = 0.3;
 
 		i++;
 	}
 
 	public function moveState(data:T) {}
+
+	override function onBack()
+	{
+		Constants.selectSfx();
+		FlxG.switchState(() -> new PlayMenuState());
+	}
 }
