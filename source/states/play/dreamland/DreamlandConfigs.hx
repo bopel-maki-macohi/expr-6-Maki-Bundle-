@@ -30,6 +30,7 @@ class DreamlandConfigs
 		enemyChances: {
 			easy: 30,
 			hard: 7.5,
+			normal: 0, // doesnt matter
 		},
 		visuals: {
 			enemySkinScale: 2,
@@ -38,6 +39,10 @@ class DreamlandConfigs
 		},
 		methods: {
 			spawnEnemy: (enemy, player) -> {},
+			hitEnemy: (enemy, bullet) ->
+			{
+				return true;
+			},
 		},
 		tweaks: {
 			bullets: 2,
@@ -52,16 +57,27 @@ class DreamlandConfigs
 	]);
 
 	public static final LUES:DreamlandConfig = CONFIG_MANAGER.makeConfig('lues', [
-		'enemyScores' => ['easy' => 8, 'normal' => 27, 'hard' => 78],
-		'enemySpeedDividers' => ['easy' => 8, 'normal' => 6, 'hard' => 2.25],
+		'enemyScores' => ['easy' => 34, 'normal' => 65, 'hard' => 86],
+		'enemySpeedDividers' => ['easy' => 4, 'normal' => 3.5, 'hard' => 1.75],
 		'enemySkins' => ['easy' => 'easy-lues', 'normal' => 'normal-lues', 'hard' => 'hard-lues'],
 		'enemyChances' => ['easy' => 25, 'hard' => 2.5],
 		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna', 'player' => 'four_bullets'],
 		'methods' => [
-			'spawnEnemy' => (enemy, player) ->
+			'spawnEnemy' => (enemy:DreamlandEnemy, player:DreamlandPlayer) ->
 			{
-				if (enemy.enemySkin == 'hard-lues')
-					enemy.y = player.y * FlxG.random.float(0.99, 1.01);
+				if (enemy.enemySkin != 'hard-lues')
+					return;
+				enemy.y = player.y * FlxG.random.float(0.99, 1.01);
+				enemy.data.hits = 2;
+			},
+			'hitEnemy' => (enemy:DreamlandEnemy, bullet:DreamlandBullet) ->
+			{
+				if (enemy.enemySkin != 'hard-lues')
+					return true;
+				enemy.data.hits--;
+				if (enemy.data.hits > 0)
+					return false;
+				return true;
 			}
 		],
 		'tweaks' => ['bullets' => 4]

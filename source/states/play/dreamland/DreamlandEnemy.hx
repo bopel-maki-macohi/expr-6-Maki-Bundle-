@@ -6,6 +6,8 @@ class DreamlandEnemy extends FlxSprite
 {
 	public var enemySkin:String = '';
 
+	public var data:Dynamic = {};
+
 	override public function new(?enemySkin:String, ?s:Float)
 	{
 		super(0, 0);

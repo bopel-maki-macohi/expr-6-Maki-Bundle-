@@ -33,7 +33,7 @@ class Dreamland extends PlayState
 	override function create()
 	{
 		super.create();
-		
+
 		this.maxBullets = config.tweaks?.bullets ?? 2;
 
 		add(bg);
@@ -49,7 +49,7 @@ class Dreamland extends PlayState
 
 		player = new DreamlandPlayer(config);
 		add(player);
-		
+
 		add(enemyGroup);
 
 		player.screenCenter();
@@ -109,11 +109,19 @@ class Dreamland extends PlayState
 			for (enemy in enemyGroup.members)
 				if (bullet.overlaps(enemy))
 				{
-					enemyGroup.members.remove(enemy);
-					enemy.destroy();
+					var res = true;
+
+					if (config.methods.hitEnemy != null)
+						res = config.methods.hitEnemy(enemy, bullet);
 
 					bulletGroup.members.remove(bullet);
 					bullet.destroy();
+
+					if (res)
+					{
+						enemyGroup.members.remove(enemy);
+						enemy.destroy();
+					}
 
 					if (enemy.enemySkin == config.enemySkins.easy)
 						score += config.enemyScores.easy;
