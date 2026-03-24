@@ -1,5 +1,8 @@
 package states.play.dreamland;
 
+import flixel.tweens.FlxEase;
+import flixel.util.FlxColor;
+import flixel.tweens.FlxTween;
 import flixel.FlxG;
 
 class DreamlandConfigs
@@ -57,8 +60,8 @@ class DreamlandConfigs
 	]);
 
 	public static final LUES:DreamlandConfig = CONFIG_MANAGER.makeConfig('lues', [
-		'enemyScores' => ['easy' => 34, 'normal' => 65, 'hard' => 86],
-		'enemySpeedDividers' => ['easy' => 4, 'normal' => 3.5, 'hard' => 1.75],
+		'enemyScores' => ['easy' => 34, 'normal' => 65, 'hard' => 75],
+		'enemySpeedDividers' => ['easy' => 4, 'normal' => 3.5, 'hard' => 4],
 		'enemySkins' => ['easy' => 'easy-lues', 'normal' => 'normal-lues', 'hard' => 'hard-lues'],
 		'enemyChances' => ['easy' => 25, 'hard' => 2.5],
 		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna', 'player' => 'four_bullets'],
@@ -74,6 +77,15 @@ class DreamlandConfigs
 			{
 				if (enemy.enemySkin != 'hard-lues')
 					return true;
+				enemy.setColorTransform(2, 2, 2);
+				FlxTween.tween(enemy.colorTransform, {
+					redMultiplier: 1,
+					greenMultiplier: 1,
+					blueMultiplier: 1,
+				}, .1 * enemy.data.hits, {
+					ease: FlxEase.sineInOut
+				});
+
 				enemy.data.hits--;
 				if (enemy.data.hits > 0)
 					return false;
