@@ -10,7 +10,7 @@ class PlayState extends FlxState
 	public var paused:Bool = false;
 
 	public var pauseBG:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-	public var pauseText:ButtonText = new ButtonText('PAUSED', true, ButtonText.SCALE_MAIN);
+	public var pauseText:ButtonText = new ButtonText('PAUSED\n(Escape to leave)', true, ButtonText.SCALE_MAIN);
 
 	override function create()
 	{
@@ -39,7 +39,12 @@ class PlayState extends FlxState
 		pauseText.visible = paused;
 
 		if (paused)
+		{
+			if (FlxG.keys.justReleased.ESCAPE)
+				FlxG.switchState(() -> new PlayMenuState());
+
 			pausedUpdate();
+		}
 		else
 			unpausedUpdate();
 	}
