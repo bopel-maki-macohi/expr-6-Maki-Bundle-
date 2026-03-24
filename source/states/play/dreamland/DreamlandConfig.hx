@@ -18,13 +18,19 @@ typedef DreamlandConfig =
 	{
 		easy:Float, hard:Float,
 	},
-	?visuals:
+
+	visuals:
 		{
-			?enemySkinScale:Float,
-			?background:String,
+			enemySkinScale:Float,
+			background:String,
+			player:String,
 		},
-	?methods:
+	methods:
 		{
-			?spawnEnemy:(enemy:DreamlandEnemy, player:DreamlandPlayer)->Void,
-		}
+			spawnEnemy:(enemy:DreamlandEnemy, player:DreamlandPlayer) -> Void,
+		},
+	tweaks:
+		{
+			bullets:Int,
+		},
 }

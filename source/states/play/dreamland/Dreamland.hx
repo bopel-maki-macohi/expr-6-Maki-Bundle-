@@ -8,7 +8,7 @@ import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
 class Dreamland extends PlayState
 {
-	public var player:DreamlandPlayer = new DreamlandPlayer();
+	public var player:DreamlandPlayer;
 
 	public var bulletGroup:FlxTypedSpriteGroup<DreamlandBullet> = new FlxTypedSpriteGroup<DreamlandBullet>();
 	public var maxBullets:Int = 2;
@@ -33,6 +33,8 @@ class Dreamland extends PlayState
 	override function create()
 	{
 		super.create();
+		
+		this.maxBullets = config.tweaks?.bullets ?? 2;
 
 		add(bg);
 
@@ -44,7 +46,10 @@ class Dreamland extends PlayState
 		bg.screenCenter();
 
 		add(bulletGroup);
+
+		player = new DreamlandPlayer(config);
 		add(player);
+		
 		add(enemyGroup);
 
 		player.screenCenter();

@@ -33,11 +33,15 @@ class DreamlandConfigs
 		},
 		visuals: {
 			enemySkinScale: 2,
-			background: 'default'
+			background: 'default',
+			player: 'default',
 		},
 		methods: {
-			spawnEnemy: (enemy, player) -> {}
-		}
+			spawnEnemy: (enemy, player) -> {},
+		},
+		tweaks: {
+			bullets: 2,
+		},
 	};
 
 	public static final GEHENNA:DreamlandConfig = CONFIG_MANAGER.makeConfig('gehenna', [
@@ -52,13 +56,14 @@ class DreamlandConfigs
 		'enemySpeedDividers' => ['easy' => 8, 'normal' => 6, 'hard' => 2.25],
 		'enemySkins' => ['easy' => 'easy-lues', 'normal' => 'normal-lues', 'hard' => 'hard-lues'],
 		'enemyChances' => ['easy' => 25, 'hard' => 2.5],
-		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna'],
+		'visuals' => ['enemySkinScale' => 1, 'background' => 'gehenna', 'player' => 'four_bullets'],
 		'methods' => [
 			'spawnEnemy' => (enemy, player) ->
 			{
 				if (enemy.enemySkin == 'hard-lues')
 					enemy.y = player.y * FlxG.random.float(0.99, 1.01);
 			}
-		]
+		],
+		'tweaks' => ['bullets' => 4]
 	]);
 }
