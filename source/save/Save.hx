@@ -131,6 +131,7 @@ class Save
 	static function onExit(l:Int)
 	{
 		trace('Saving...');
+		trace(FlxG.save.data);
 		FlxG.save.flush();
 	}
 }
