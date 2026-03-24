@@ -39,6 +39,7 @@ class Dreamland extends PlayState
 		add(bg);
 
 		bg.loadGraphic(AssetsUtil.image('play/dreamland/backgrounds/' + config?.visuals?.background ?? 'default'));
+		trace('BG: ${bg.graphic.key}');
 
 		bg.scale.set(2, 2);
 		bg.updateHitbox();
@@ -122,14 +123,18 @@ class Dreamland extends PlayState
 						enemyGroup.members.remove(enemy);
 						enemy.destroy();
 
+						final prevS = score;
+
 						if (enemy.enemySkin == config.enemySkins.easy)
 							score += config.enemyScores.easy;
-						
+
 						if (enemy.enemySkin == config.enemySkins.normal)
 							score += config.enemyScores.normal;
 
 						if (enemy.enemySkin == config.enemySkins.hard)
 							score += config.enemyScores.hard;
+
+						trace('Awarded score: ${score - prevS}');
 					}
 
 					FlxG.sound.play(AssetsUtil.sound('play/dreamland/explode${FlxG.random.int(1, 3)}'));
@@ -195,6 +200,8 @@ class Dreamland extends PlayState
 
 		if (config.methods?.spawnEnemy != null)
 			config.methods.spawnEnemy(newEnemy, player);
+
+		trace('Spawned enemy: ${newEnemy.enemySkin}');
 
 		enemyGroup.add(newEnemy);
 	}
