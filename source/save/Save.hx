@@ -30,38 +30,33 @@ class Save
 		else if (data.shamelessPlug)
 			data.shamelessPlug = false;
 
-		if (data.highscores == null)
-			data.highscores = {
-				dreamland: {'default': 0},
-				aliotow: {'default': 0},
-			};
+		if (Std.isOfType(data.highscores, String))
+			data.highscores = null;
 
-		var intDreamlandScore:Null<Int> = null;
+		data.highscores ??= {};
 
-		try
-		{
-			intDreamlandScore = cast data.highscores.dreamland;
-		}
-		catch (e)
-		{
-			intDreamlandScore = null;
-		}
+		data.highscores.dreamland ??= {};
+		data.highscores.aliotow ??= {};
 
-		trace(data);
-		if (data.version == null || intDreamlandScore != null) // 0.1 - 0.1.1 saves
+		if (Std.isOfType(data.highscores.dreamland, Int)) // 0.1 - 0.1.1 saves
 		{
-			if (Std.isOfType(intDreamlandScore, Int))
-				setHighscore('dreamland', 'default', intDreamlandScore);
+			final s = data.highscores.dreamland;
+
+			data.highscores.dreamland = {};
+			setHighscore('dreamland', 'default', data.highscores.dreamland);
 		}
 
 		if (getHighscore('dreamland', 'default') == null)
 			setHighscore('dreamland', 'default', 0);
 
+		if (getHighscore('aliotow', 'default') == null)
+			setHighscore('aliotow', 'default', 0);
+		
 		data.version = VersionUtil.getRawVersion();
-
+		
 		trace('Save initalization complete!');
-
 		save();
+
 		trace(FlxG.save.data);
 	}
 
