@@ -47,6 +47,7 @@ class Save
 			intDreamlandScore = null;
 		}
 
+		trace(data);
 		if (data.version == null || intDreamlandScore != null) // 0.1 - 0.1.1 saves
 		{
 			if (Std.isOfType(intDreamlandScore, Int))
