@@ -35,9 +35,6 @@ class Save
 
 		data.highscores ??= {};
 
-		data.highscores.dreamland ??= {};
-		data.highscores.aliotow ??= {};
-
 		if (Std.isOfType(data.highscores.dreamland, Int)) // 0.1 - 0.1.1 saves
 		{
 			final s = data.highscores.dreamland;
@@ -46,14 +43,17 @@ class Save
 			setHighscore('dreamland', 'default', data.highscores.dreamland);
 		}
 
-		if (getHighscore('dreamland', 'default') == null)
-			setHighscore('dreamland', 'default', 0);
+		for (minigame in ['dreamland', 'aliotow'])
+		{
+			if (Reflect.field(data.highscores, minigame) == null)
+				Reflect.setField(data.highscores, minigame, {});
 
-		if (getHighscore('aliotow', 'default') == null)
-			setHighscore('aliotow', 'default', 0);
-		
+			if (getHighscore(minigame, 'default') == null)
+				setHighscore(minigame, 'default', 0);
+		}
+
 		data.version = VersionUtil.getRawVersion();
-		
+
 		trace('Save initalization complete!');
 		save();
 	}
