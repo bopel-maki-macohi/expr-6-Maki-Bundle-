@@ -1,5 +1,7 @@
 package states.play.aliotow;
 
+import flixel.util.FlxColor;
+import flixel.FlxG;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -31,6 +33,17 @@ class Aliotow extends PlayState
 	override function create()
 	{
 		super.create();
+
+		add(enemies);
+		spawnEnemy();
+
+		add(bullets);
+
+		player.screenCenter();
+		player.y = FlxG.height - player.height;
+		add(player);
+
+		appendBaseObjects();
 	}
 
 	override function update(elapsed:Float)
@@ -45,5 +58,35 @@ class Aliotow extends PlayState
 	override function unpausedUpdate()
 	{
 		super.unpausedUpdate();
+	}
+
+	public function spawnEnemy()
+	{
+		var x = 0;
+		var y = 0;
+
+		var enemySpacingOffset:Int = config.enemies.spacing;
+
+		while (y < config.enemies.vertical_count)
+		{
+			while (x < config.enemies.horizontal_count)
+			{
+				var newEnemy:AliotowEnemy = new AliotowEnemy();
+				enemies.add(newEnemy);
+
+				newEnemy.screenCenter();
+
+				final xInc = (newEnemy.width + enemySpacingOffset);
+				final yInc = (newEnemy.height + enemySpacingOffset);
+
+				newEnemy.x += xInc * (x - (config.enemies.horizontal_count / 2));
+				newEnemy.y += yInc * (y - (config.enemies.vertical_count / 2));
+
+				x++;
+			}
+
+			x = 0;
+			y++;
+		}
 	}
 }

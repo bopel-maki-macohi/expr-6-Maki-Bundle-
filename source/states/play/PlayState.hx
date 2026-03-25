@@ -12,6 +12,8 @@ class PlayState extends FlxState
 	public var pauseBG:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 	public var pauseText:ButtonText = new ButtonText('PAUSED\n(Escape to leave)', true, ButtonText.SCALE_MAIN);
 
+	public var devbuild:ButtonText = new ButtonText('${VersionUtil.getVersion()} Development Build', false, ButtonText.SCALE_QUARTER, 10, 10);
+
 	override function create()
 	{
 		super.create();
@@ -27,6 +29,17 @@ class PlayState extends FlxState
 		pauseText.color = FlxColor.WHITE;
 
 		FlxG.mouse.visible = false;
+		
+		devbuild.color = FlxColor.WHITE;
+	}
+
+	public function appendBaseObjects()
+	{
+		add(pauseBG);
+		add(pauseText);
+
+		if (Defines.debug)
+			add(devbuild);
 	}
 
 	override function update(elapsed:Float)

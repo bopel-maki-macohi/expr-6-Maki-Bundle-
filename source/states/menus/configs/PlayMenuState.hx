@@ -12,8 +12,8 @@ class PlayMenuState extends ConfigMenuState<ConfigMenuState<Any>>
 		spacingMultiplier = 2;
 
 		makeConfigText('Dreamland', new DreamlandConfigMenuState());
-		// makeConfigText('Aliotow', new AliotowConfigMenuState());
-		makeConfigText('Aliotow', null);
+		makeConfigText('Aliotow', new AliotowConfigMenuState());
+		// makeConfigText('Aliotow', null);
 		makeConfigText('Seault', null);
 		makeConfigText('Spedat', null);
 		makeConfigText('Kiolets', null);

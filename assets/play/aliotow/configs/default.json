@@ -1,4 +1,10 @@
 {
+    "enemies": {
+        "horizontal_count": 10,
+        "vertical_count": 10,
+
+        "spacing": 20
+    },
     "tweaks": {
         "id": "default"
     }

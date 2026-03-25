@@ -45,15 +45,24 @@ class VersionUtil
 		if (v.endsWith('.0'))
 			v = v.substr(0, v.length - 2);
 
-		if (Defines.PRE_RELEASE != null && Std.parseInt(Defines.PRE_RELEASE) > 0)
+		function lbbb(str:String)
 		{
 			if (linebreakBetweenBits)
 				v += '\n';
 			else
 				v += ' ';
 
-			v += '(pre-release ${Defines.PRE_RELEASE})';
+			v += str;
 		}
+
+		function checkIntDefine(define:String)
+			return define != null && Std.parseInt(define) > 0;
+
+		if (checkIntDefine(Defines.PRE_RELEASE))
+			lbbb('(pre-release ${Defines.PRE_RELEASE})');
+
+		if (Defines.debug)
+			lbbb('(devbuild ${Constants.BUILD})');
 
 		return v;
 	}

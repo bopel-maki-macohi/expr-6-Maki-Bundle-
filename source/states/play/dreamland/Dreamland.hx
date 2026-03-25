@@ -66,8 +66,7 @@ class Dreamland extends PlayState
 		scoreText.color = FlxColor.WHITE;
 		add(scoreText);
 
-		add(pauseBG);
-		add(pauseText);
+		appendBaseObjects();
 	}
 
 	override function update(elapsed:Float)

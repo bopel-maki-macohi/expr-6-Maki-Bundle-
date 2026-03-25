@@ -6,7 +6,7 @@ import flixel.FlxSprite;
 class TitleMenuState extends MenuState
 {
 	public var logo:FlxSprite = new FlxSprite(0, 0, AssetsUtil.image('menus/title/logo'));
-	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(true), false, ButtonText.SCALE_HALF);
+	public var versionText:ButtonText = new ButtonText(VersionUtil.getVersion(), false, ButtonText.SCALE_HALF);
 
 	public var popup:Popup;
 
@@ -23,7 +23,7 @@ class TitleMenuState extends MenuState
 
 		logo.updateHitbox();
 
-		logo.setPosition(-80, -80);
+		logo.setPosition(-80, -40);
 		add(logo);
 
 		bugReportText.setPosition(FlxG.width - bugReportText.width, FlxG.height - bugReportText.height);
@@ -64,7 +64,7 @@ class TitleMenuState extends MenuState
 			});
 		}
 
-		versionText.setPosition(logo.x + (logo.width / 1.3), logo.y + (logo.height / 1.5));
+		versionText.setPosition(10, 10);
 		add(versionText);
 
 		play.onClick.add(() -> FlxG.switchState(() -> new PlayMenuState()));
