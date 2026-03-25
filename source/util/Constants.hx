@@ -27,9 +27,4 @@ class Constants
 	**/
 	public static function selectSfx()
 		SOUND_MENUS_SELECT.play();
-
-	public static var BUILD(get, never):Int;
-
-	static function get_BUILD():Int
-		return Std.parseInt(FlxG.stage.application.meta.get('build'));
 }

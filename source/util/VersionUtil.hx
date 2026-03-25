@@ -61,9 +61,6 @@ class VersionUtil
 		if (checkIntDefine(Defines.PRE_RELEASE))
 			lbbb('(pre-release ${Defines.PRE_RELEASE})');
 
-		if (Defines.debug)
-			lbbb('(devbuild ${Constants.BUILD})');
-
 		return v;
 	}
 }
