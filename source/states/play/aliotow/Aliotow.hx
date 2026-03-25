@@ -1,5 +1,8 @@
 package states.play.aliotow;
 
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.group.FlxGroup.FlxTypedGroup;
+
 class Aliotow extends PlayState
 {
 	public var config:AliotowConfig;
@@ -19,6 +22,11 @@ class Aliotow extends PlayState
 		if (highscore == null)
 			highscore = 0;
 	}
+
+	public var player:AliotowPlayer = new AliotowPlayer();
+
+	public var bullets:FlxTypedSpriteGroup<AliotowBullet> = new FlxTypedSpriteGroup<AliotowBullet>();
+	public var enemies:FlxTypedSpriteGroup<AliotowEnemy> = new FlxTypedSpriteGroup<AliotowEnemy>();
 
 	override function create()
 	{
