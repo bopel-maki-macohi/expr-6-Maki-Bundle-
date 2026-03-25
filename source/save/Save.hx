@@ -56,17 +56,12 @@ class Save
 		
 		trace('Save initalization complete!');
 		save();
-
-		trace(FlxG.save.data);
 	}
 
 	static function onExit(l:Int)
 	{
 		trace('Saving...');
-
 		save();
-		trace(FlxG.save.data);
-
 		FlxG.save.flush();
 	}
 
@@ -74,6 +69,7 @@ class Save
 	{
 		for (field in Reflect.fields(data))
 			Reflect.setField(FlxG.save.data, field, Reflect.field(data, field));
+		trace(FlxG.save.data);
 	}
 
 	public static function getHighscore(minigame:String, config:String):Null<Int>
