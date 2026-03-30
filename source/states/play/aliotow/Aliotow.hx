@@ -67,7 +67,7 @@ class Aliotow extends PlayState
 		{
 			enemy.x -= enemy.width / 4;
 
-			if (enemy.x < (enemy.width * 2))
+			if (enemy.x < (enemy.width * -2))
 			{
 				enemies.remove(enemy);
 				enemy.destroy();
