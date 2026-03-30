@@ -1,5 +1,6 @@
 package;
 
+import util.plugins.ScreenshotPlugin;
 import flixel.FlxG;
 import flixel.FlxState;
 
@@ -27,6 +28,8 @@ class InitState extends FlxState
 			FlxG.signals.postUpdate.add(postUpdate);
 
 		FlxG.stage.window.title = 'Maki Bundle ${VersionUtil.getVersion()}';
+
+		ScreenshotPlugin.init();
 
 		if (Defines.html5)
 			FlxG.switchState(() -> new WebInitMenu(() -> FlxG.switchState(() -> new SplashState())));
