@@ -67,15 +67,7 @@ class DreamlandConfigs
 
 	static function multipleHitEnemy(enemy:DreamlandEnemy, bullet:DreamlandBullet):Bool
 	{
-		enemy.setColorTransform(2, 2, 2);
-
-		FlxTween.tween(enemy.colorTransform, {
-			redMultiplier: 1,
-			greenMultiplier: 1,
-			blueMultiplier: 1,
-		}, .1 * enemy.data.hits, {
-			ease: FlxEase.sineInOut
-		});
+		Constants.flashSprite(enemy, .1 * enemy.data.hits);
 
 		enemy.data.hits--;
 		if (enemy.data.hits > 0)

@@ -1,5 +1,8 @@
 package util;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.FlxSprite;
 import flixel.sound.FlxSound;
 import flixel.FlxG;
 
@@ -27,4 +30,17 @@ class Constants
 	**/
 	public static function selectSfx()
 		SOUND_MENUS_SELECT.play();
+
+	public static function flashSprite(sprite:FlxSprite, time:Float = .1)
+	{
+		sprite.setColorTransform(2, 2, 2);
+
+		FlxTween.tween(sprite.colorTransform, {
+			redMultiplier: 1,
+			greenMultiplier: 1,
+			blueMultiplier: 1,
+		}, time, {
+			ease: FlxEase.sineInOut
+		});
+	}
 }

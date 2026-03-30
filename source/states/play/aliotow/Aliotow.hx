@@ -65,12 +65,29 @@ class Aliotow extends PlayState
 
 		for (enemy in enemies)
 		{
+			if (enemy == null)
+				continue;
+
 			enemy.x -= enemy.width / 4;
 
 			if (enemy.x < (enemy.width * -2))
 			{
 				enemies.remove(enemy);
 				enemy.destroy();
+				continue;
+			}
+
+			if (FlxG.mouse.overlaps(enemy) && FlxG.mouse.justPressed)
+			{
+				Constants.flashSprite(enemy, .1 * enemy.health);
+
+				enemy.health--;
+
+				if (enemy.health <= 0)
+				{
+					enemies.remove(enemy);
+					enemy.destroy();
+				}
 			}
 		}
 	}
