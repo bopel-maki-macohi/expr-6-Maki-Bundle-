@@ -13,7 +13,7 @@ class MenuState extends FlxState
 		FlxG.camera.bgColor = FlxColor.WHITE;
 		FlxG.mouse.visible = true;
 
-		if (FlxG.sound?.music?.playing ?? true)
-			FlxG.sound.playMusic(AssetsUtil.sound('menus/bundleMenu'), 0.25);
+		if (!FlxG.sound.music?.playing)
+			FlxG.sound.playMusic(AssetsUtil.sound('menus/bundleMenu'));
 	}
 }
