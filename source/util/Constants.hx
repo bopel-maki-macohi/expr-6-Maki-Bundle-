@@ -27,4 +27,6 @@ class Constants
 	**/
 	public static function selectSfx()
 		SOUND_MENUS_SELECT.play();
+
+	public static final FOLDER_SCREENSHOTS:String = 'screenshots';
 }

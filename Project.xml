@@ -4,6 +4,8 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
+	<define name="SCREENSHOT_PLUGIN" if="desktop"/>
+
 	<!-- <define name="PRE_RELEASE" value="1" /> -->
 
 	<haxedef name="HXCPP_CHECK_POINTER" />
