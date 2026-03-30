@@ -9,6 +9,6 @@ class AliotowPlayer extends FlxSprite
 	{
 		super();
 
-		makeGraphic(32, 32, FlxColor.LIME);
+		makeGraphic(128, 128, FlxColor.LIME);
 	}
 }
