@@ -86,13 +86,9 @@ class Aliotow extends PlayState
 		for (enemy in enemies)
 		{
 			if (newEnemy.overlaps(enemy))
-			{
 				return;
-			}
 			else
-			{
 				continue;
-			}
 		}
 
 		enemies.add(newEnemy);
