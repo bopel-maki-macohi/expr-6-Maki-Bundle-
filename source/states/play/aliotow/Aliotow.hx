@@ -43,6 +43,8 @@ class Aliotow extends PlayState
 		add(player);
 
 		appendBaseObjects();
+
+		FlxG.mouse.visible = true;
 	}
 
 	override function update(elapsed:Float)
