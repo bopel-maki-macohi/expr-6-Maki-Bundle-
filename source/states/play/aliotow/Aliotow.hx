@@ -35,7 +35,6 @@ class Aliotow extends PlayState
 		super.create();
 
 		add(enemies);
-		spawnEnemy();
 
 		add(bullets);
 
@@ -58,35 +57,16 @@ class Aliotow extends PlayState
 	override function unpausedUpdate()
 	{
 		super.unpausedUpdate();
+
+		if (FlxG.random.int(0, 20) <= 4)
+			spawnEnemy();
 	}
 
 	public function spawnEnemy()
 	{
-		var x = 0;
-		var y = 0;
+		var newEnemy:AliotowEnemy = new AliotowEnemy();
+		enemies.add(newEnemy);
 
-		var enemySpacingOffset:Int = config.enemies.spacing;
-
-		while (y < config.enemies.vertical_count)
-		{
-			while (x < config.enemies.horizontal_count)
-			{
-				var newEnemy:AliotowEnemy = new AliotowEnemy();
-				enemies.add(newEnemy);
-
-				newEnemy.screenCenter();
-
-				final xInc = (newEnemy.width + enemySpacingOffset);
-				final yInc = (newEnemy.height + enemySpacingOffset);
-
-				newEnemy.x += xInc * (x - (config.enemies.horizontal_count / 2));
-				newEnemy.y += yInc * (y - (config.enemies.vertical_count / 2));
-
-				x++;
-			}
-
-			x = 0;
-			y++;
-		}
+		newEnemy.screenCenter();
 	}
 }
