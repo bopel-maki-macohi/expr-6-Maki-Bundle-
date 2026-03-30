@@ -1,5 +1,6 @@
 package util.plugins;
 
+import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.util.FlxTimer;
 import openfl.display.BitmapData;
