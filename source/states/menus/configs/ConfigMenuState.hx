@@ -48,7 +48,6 @@ class ConfigMenuState<T> extends BackMenuState
 			configText.setPosition(10, y);
 
 			x = configText.x + addValueW;
-
 		}
 		else
 			x += addValueW;
@@ -69,7 +68,10 @@ class ConfigMenuState<T> extends BackMenuState
 		i++;
 	}
 
-	public function moveState(data:T) {}
+	public function moveState(data:T)
+	{
+		FlxG.sound.music.stop();
+	}
 
 	override function onBack()
 	{
