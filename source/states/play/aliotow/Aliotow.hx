@@ -60,6 +60,17 @@ class Aliotow extends PlayState
 
 		if (FlxG.random.int(0, 20) <= 4)
 			spawnEnemy();
+
+		for (enemy in enemies)
+		{
+			enemy.x -= enemy.width / 2;
+
+			if (enemy.x < (enemy.width * 2))
+			{
+				enemies.remove(enemy);
+				enemy.destroy();
+			}
+		}
 	}
 
 	public function spawnEnemy()
@@ -68,5 +79,8 @@ class Aliotow extends PlayState
 		enemies.add(newEnemy);
 
 		newEnemy.screenCenter();
+		
+		newEnemy.y *= FlxG.random.float(.8, 1.2);
+		newEnemy.x = FlxG.width + (newEnemy.width * 2);
 	}
 }
