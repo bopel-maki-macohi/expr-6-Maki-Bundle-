@@ -29,7 +29,7 @@ class PlayState extends FlxState
 		pauseText.color = FlxColor.WHITE;
 
 		FlxG.mouse.visible = false;
-		
+
 		devbuild.color = FlxColor.WHITE;
 	}
 
@@ -55,7 +55,7 @@ class PlayState extends FlxState
 		if (paused)
 		{
 			if (FlxG.keys.justReleased.ESCAPE)
-				FlxG.switchState(() -> new PlayMenuState());
+				onEscape();
 
 			pausedUpdate();
 		}
@@ -66,4 +66,9 @@ class PlayState extends FlxState
 	public function pausedUpdate() {};
 
 	public function unpausedUpdate() {};
+
+	public function onEscape()
+	{
+		FlxG.switchState(() -> new PlayMenuState());
+	}
 }

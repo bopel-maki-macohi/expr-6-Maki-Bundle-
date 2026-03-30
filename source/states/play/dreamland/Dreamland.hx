@@ -24,7 +24,7 @@ class Dreamland extends PlayState
 	public var config:DreamlandConfig;
 
 	public var highscore:Null<Int> = null;
-	
+
 	override public function new(config:DreamlandConfig)
 	{
 		super();
@@ -167,7 +167,7 @@ class Dreamland extends PlayState
 			}
 			else if (FlxCollision.pixelPerfectCheck(enemy, player))
 			{
-				FlxG.switchState(() -> new PlayMenuState());
+				openSubState(new DreamlandResults(true));
 			}
 		}
 	}
@@ -207,5 +207,10 @@ class Dreamland extends PlayState
 			config.methods.spawnEnemy(newEnemy, player);
 
 		enemyGroup.add(newEnemy);
+	}
+
+	override function onEscape()
+	{
+		openSubState(new DreamlandResults(false));
 	}
 }
