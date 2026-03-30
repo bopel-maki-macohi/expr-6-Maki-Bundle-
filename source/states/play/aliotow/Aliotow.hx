@@ -60,12 +60,12 @@ class Aliotow extends PlayState
 	{
 		super.unpausedUpdate();
 
-		if (FlxG.random.int(0, 20) <= 4)
+		if (FlxG.random.int(0, 40) == 5)
 			spawnEnemy();
 
 		for (enemy in enemies)
 		{
-			enemy.x -= enemy.width / 2;
+			enemy.x -= enemy.width / 4;
 
 			if (enemy.x < (enemy.width * 2))
 			{
