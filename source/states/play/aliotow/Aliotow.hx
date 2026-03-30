@@ -60,7 +60,7 @@ class Aliotow extends PlayState
 	{
 		super.unpausedUpdate();
 
-		if (FlxG.random.int(0, 40) == 5)
+		if (FlxG.random.int(0, 45) == 5)
 			spawnEnemy();
 
 		for (enemy in enemies)
@@ -78,11 +78,23 @@ class Aliotow extends PlayState
 	public function spawnEnemy()
 	{
 		var newEnemy:AliotowEnemy = new AliotowEnemy();
-		enemies.add(newEnemy);
-
 		newEnemy.screenCenter();
-		
+
 		newEnemy.y *= FlxG.random.float(.8, 1.2);
 		newEnemy.x = FlxG.width + (newEnemy.width * 2);
+
+		for (enemy in enemies)
+		{
+			if (newEnemy.overlaps(enemy))
+			{
+				return;
+			}
+			else
+			{
+				continue;
+			}
+		}
+
+		enemies.add(newEnemy);
 	}
 }
